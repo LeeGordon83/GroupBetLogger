@@ -106,6 +106,9 @@ a {
 .Message {
   background: white;
   padding: 30px;
+  width: 400px;
+  position: absolute;
+  top: 40%;
   border-bottom: var(--ui-shadow-border);
   box-shadow: var(--ui-shawdow);
 }
@@ -123,6 +126,8 @@ a {
 .NavButtons {
   display: flex;
   width: 100%;
+  position: absolute;
+  top: 90%;
   justify-content: space-around;
   align-items: center;
   padding: 0 20px;
@@ -158,4 +163,62 @@ a {
 .UserView {
   background: url('footy4.jpg') left bottom;
   background-size: cover;
+}
+
+content {
+  display: block;
+  margin: 0 auto;
+  max-width: 1020px;
+  position: absolute;
+  top: 40%;
+  left: 43%;
+  
+}
+
+#authenticate {
+  display: block;
+  max-width: 394px;
+  padding: 0 4px;
+
+  
+}
+
+#authenticate > input {
+  display: block;
+}
+
+input.authenticate  {
+  margin: 24px 0 20px 0;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  padding: 0 10px;
+  background: white;
+}
+
+#auth-container {
+  width: 100%;
+  max-width: 394px;
+  padding-top: 20px;
+}
+
+
+#title {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+#small-title {
+  font-size: 25px;
+}
+
+input[type='submit'],
+#sub-title,
+.banner-link,
+.calendar-bar,
+.person,
+.ui-datepicker-prev span,
+.ui-datepicker-next span {
+  font-size: 20px;
 }

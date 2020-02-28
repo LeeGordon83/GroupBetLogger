@@ -1,40 +1,48 @@
-// index.js
-
-/**
- * Required External Modules
- */
+const bodyParser = require('body-parser')
 const express = require('express')
-const path = require('path')
-
-/**
- * App Variables
- */
-
+const session = require('express-session')
 const app = express()
-const port = process.env.PORT || '8000'
+const expressLayouts = require('express-ejs-layouts')
+const port = process.env.PORT
+
+app.use(expressLayouts)
+app.set('view engine', 'ejs')
 
 /**
  *  App Configuration
  */
 
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'pug')
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.static('./public'))
+app.use(session(require('./plugins/session')))
+app.use(require('./plugins/flash'))
 
 /**
  * Routes Definitions
  */
+app.get('/', require('./routes/index'))
 
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Home' })
-  app.get('/user', (req, res) => {
-    res.render('user', { title: 'Profile', userProfile: { nickname: 'Lee' } })
+app.get('/login', require('./routes/login'))
+/**
+ * app.post('/login', require('./routes/login'))
+app.get('/logout', require('./routes/logout'))
+*/
+
+app.get('/user', (req, res) => {
+  res.render('user.ejs', {
+    title: 'Profile',
+    userProfile: {
+      nickname: 'Lee Gordon'
+    }
   })
 })
 
 /**
  * Server Activation
  */
-app.listen(port, () => {
-  console.log(`Listening to requests on http://localhost:${port}`)
-})
+
+app.listen(port)
+
+module.exports = app
+
+console.log('app now listening on port ' + port)
