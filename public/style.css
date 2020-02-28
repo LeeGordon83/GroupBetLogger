@@ -156,8 +156,15 @@ a {
 }
 
 .WelcomeView {
-  background: url('footy4.jpg') left bottom;
+  background-image: 
+  linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),
+   url('footy5.jpg') ;
+
   background-size: cover;
+ 
 }
 
 .UserView {
@@ -181,6 +188,10 @@ content {
   padding: 0 4px;
 
   
+}
+
+.centre {
+  margin: auto;
 }
 
 #authenticate > input {
@@ -207,6 +218,7 @@ input.authenticate  {
   width: 100%;
   max-width: 394px;
   padding-top: 20px;
+  color: white;
 }
 
 
