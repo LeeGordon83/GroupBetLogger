@@ -203,6 +203,12 @@ input.authenticate  {
   padding-top: 20px;
 }
 
+#reg-container {
+  width: 100%;
+  max-width: 394px;
+  padding-top: 20px;
+}
+
 
 #title {
   font-size: 60px;
