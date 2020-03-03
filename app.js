@@ -20,9 +20,14 @@ app.use(require('./plugins/flash'))
 /**
  * Routes Definitions
  */
-app.get('/', require('./routes/index'))
+app.get('/', require('./server/routes/index'))
 
-app.get('/login', require('./routes/login'))
+app.get('/login', require('./server/routes/enter'))
+
+app.get('/loginclick', require('./server/routes/login'))
+
+app.get('/register', require('./server/routes/register').get)
+app.post('/register', require('./server/routes/register').post)
 /**
  * app.post('/login', require('./routes/login'))
 app.get('/logout', require('./routes/logout'))

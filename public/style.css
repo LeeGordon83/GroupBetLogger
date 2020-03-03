@@ -211,6 +211,7 @@ input.authenticate  {
 #auth-container {
   width: 100%;
   max-width: 394px;
+  min-width: 247px;
   padding-top: 20px;
 }
 

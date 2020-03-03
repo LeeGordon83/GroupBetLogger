@@ -4,19 +4,14 @@
   <content>
 
     
-    <form id='authenticate' action='/loginclick' autocomplete='off' method='POST'>
+    <form id='authenticate' action='/register' autocomplete='off' method='POST'>
       <input class='authenticate' type='email' name='email' placeholder='Email' required>
       <input class='authenticate' type='password' name='password' placeholder='Password' required>
     </form>
     
     <div id='auth-container'>
-      <input class='NavButton centre' form='authenticate' type='submit' value='Login'>
+      <input class='NavButton centre' form='authenticate' type='submit' value='Register'>
     </div>
-    <div id='reg-container'>
-    <a id='forgot-password' class='right' href=/forgot-password>Forgot your password?</a> |
-    <a id='register' class='right' href=/register>Register</a>
-    </div>
- 
 
     <% if (flash && flash.message) { %><div id='flash'><%= flash.message %></div><% } %>
 
