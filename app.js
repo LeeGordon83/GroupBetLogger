@@ -22,25 +22,13 @@ app.use(require('./plugins/flash'))
  */
 app.get('/', require('./server/routes/index'))
 
-app.get('/login', require('./server/routes/enter'))
-
-app.get('/loginclick', require('./server/routes/login'))
+app.get('/login', require('./server/routes/login').get)
+app.post('/login', require('./server/routes/login').post)
 
 app.get('/register', require('./server/routes/register').get)
 app.post('/register', require('./server/routes/register').post)
-/**
- * app.post('/login', require('./routes/login'))
-app.get('/logout', require('./routes/logout'))
-*/
 
-app.get('/user', (req, res) => {
-  res.render('user.ejs', {
-    title: 'Profile',
-    userProfile: {
-      nickname: 'Lee Gordon'
-    }
-  })
-})
+app.get('/main', require('./server/routes/main'))
 
 /**
  * Server Activation

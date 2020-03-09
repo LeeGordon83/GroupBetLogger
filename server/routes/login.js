@@ -1,19 +1,35 @@
-const LogIn = require('../lib/login')
+const User = require('../../lib/users')
+const bcrypt = require('bcrypt')
 
-module.exports = async (req, res) => {
-  const result = await LogIn.authenticate(req.body)
-  if (result.user) {
-    req.session.week = {
-      date: new Date(),
-      current: true
-    }
-    req.session.user = result.user
-    res.redirect(`/dashboard`)
-  } else {
-    req.session.flash = {
-      message: 'email or password incorrect'
-    }
+module.exports = {
+  get: (_, res) => {
+    res.render('login.ejs', {
+      flash: res.locals.flash })
+  },
 
-    res.redirect('/')
+  post: async (req, res) => {
+    const email = req.body.email
+    const password = req.body.password
+    const results = await User.retrieveData(email)
+
+    if (!User.find(results)) {
+      req.session.flash = {
+        message: 'Invalid user name'
+      }
+      res.redirect('/login')
+    } else {
+      if (await bcrypt.compareSync(password, results.password)) {
+        req.session.user = results.email
+        res.render('main.ejs', {
+          user: results.email
+        }
+        )
+      } else {
+        req.session.flash = {
+          message: 'Invalid password'
+        }
+        res.redirect('/login')
+      }
+    }
   }
 }

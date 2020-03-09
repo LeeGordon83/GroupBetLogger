@@ -241,3 +241,10 @@ input[type='submit'],
 .ui-datepicker-next span {
   font-size: 20px;
 }
+
+#flash {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  margin-top: 20px;
+}
