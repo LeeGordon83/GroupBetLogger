@@ -161,15 +161,10 @@ a {
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)
   ),
-   url('footy5.jpg') ;
+   url('/images/footy5.jpg') ;
 
   background-size: cover;
  
-}
-
-.UserView {
-  background: url('footy4.jpg') left bottom;
-  background-size: cover;
 }
 
 content {
