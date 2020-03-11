@@ -1,33 +1,32 @@
 {
-  "name": "GroupBetLogger",
+  "name": "groupbetlogger",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon ./app.js",
-    "ui": "browser-sync start --proxy=localhost:8000 --files='**/*.css, **/*.pug, **/*.js' --ignore=node_modules --reload-delay 10 --no-ui --no-notify"
+    "dev": "nodemon ./app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.26.7",
+    "node-env-run": "^3.0.2",
     "nodemon": "^2.0.2"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.0",
     "morgan": "^1.9.1",
-    "mysql2": "^2.1.0",
     "nunjucks": "^3.2.0",
     "pg": "^7.18.2",
     "pg-hstore": "^2.3.3",
-    "pug": "^2.0.4",
     "sequelize": "^5.21.5"
   }
 }

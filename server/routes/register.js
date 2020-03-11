@@ -1,7 +1,7 @@
 const User = require('../../lib/users')
 
 module.exports = {
-  get: (_, res) => {
+  get: (req, res) => {
     res.render('register.ejs', {
       flash: res.locals.flash })
   },
@@ -17,10 +17,10 @@ module.exports = {
       }
       res.redirect('/register')
     } else {
-      const resultsTwo = await User.create(email, password)
-      req.session.user = resultsTwo.id
+      const newUser = await User.create(email, password)
+      req.session.user = newUser.id
       res.render('main.ejs', {
-        user: resultsTwo.email
+        user: newUser.email
       }
       )
     }

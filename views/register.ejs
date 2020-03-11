@@ -1,19 +1,11 @@
-
-
-
-  <content>
-
-    
+<content>    
     <form id='authenticate' action='/register' autocomplete='off' method='POST'>
       <input class='authenticate' type='email' name='email' placeholder='Email' required>
       <input class='authenticate' type='password' name='password' placeholder='Password' required>
     </form>
-    
     <div id='auth-container'>
       <input class='NavButton centre' form='authenticate' type='submit' value='Register'>
     </div>
-
     <% if (flash && flash.message) { %><div id='flash'><%= flash.message %></div><% } %>
-
   </content>
 
