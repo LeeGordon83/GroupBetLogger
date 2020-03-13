@@ -1,5 +1,5 @@
-const User = require('../../lib/users')
 const bcrypt = require('bcrypt')
+const find = require('../../lib/find')
 
 module.exports = {
   get: (_, res) => {
@@ -10,9 +10,9 @@ module.exports = {
   post: async (req, res) => {
     const email = req.body.email
     const password = req.body.password
-    const results = await User.retrieveData(email)
+    const results = await find.findEmail(email)
 
-    if (!User.find(results)) {
+    if (results === null && results === undefined) {
       req.session.flash = {
         message: 'Invalid user name'
       }
