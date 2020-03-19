@@ -1,5 +1,4 @@
-const bcrypt = require('bcrypt')
-const find = require('../../lib/find')
+const login = require('../lib/login')
 
 module.exports = {
   get: (_, res) => {
@@ -10,26 +9,14 @@ module.exports = {
   post: async (req, res) => {
     const email = req.body.email
     const password = req.body.password
-    const results = await find.findEmail(email)
+    const user = login.userlogin(email, password)
+    console.log(user)
 
-    if (results === null && results === undefined) {
+    if (user === null) {
       req.session.flash = {
         message: 'Invalid user name'
       }
       res.redirect('/login')
-    } else {
-      if (await bcrypt.compareSync(password, results.password)) {
-        req.session.user = results.email
-        res.render('main.ejs', {
-          user: results.email
-        }
-        )
-      } else {
-        req.session.flash = {
-          message: 'Invalid password'
-        }
-        res.redirect('/login')
-      }
     }
   }
 }
