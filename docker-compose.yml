@@ -21,6 +21,8 @@ services:
       - ./views/:/home/node/views/
       - ./index.js:/home/node/index.js
       - ./package.json:/home/node/package.json
+    ports:
+      - "3000:3000"
 
   group-bet-logger-postgres:
     image: postgres:11.4-alpine
