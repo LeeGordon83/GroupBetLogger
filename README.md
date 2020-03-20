@@ -14,58 +14,15 @@ Assuming you have Node.js and NPM installed, in that same location, in Terminal:
 
 `npm install`
 
-## Database Setup
+## Application Setup
 
-Assuming you have `Homebrew` installed, in Terminal:
+The application and database are contained in Docker.
 
-```
-brew install postgresql
+Assuming you already have Docker Desktop installed then run the commands below in terminal: -
 
-ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+docker-compose build
 
-psql postgres
-```
-
-Then paste the SQL script `CREATE DATABASE groupbetlogger;`
-
-Close postgres with `\q`
-
-In Terminal:
-
-`npm run migrations`
-
-To populate the database with seed data, in Terminal:
-
-`npm run seeds`
-
-Store local environmental variables by pasting each of the following into Terminal (if you have already set up user names, passwords, or changed the defaults for postgres, these should be entered beside the '=''s):
-
-```
-export PKDATABASE=ketchup
-export PKHOST=
-export PKPASSWORD=
-export PKPORT=
-export PKUSER=
-
-export SESSIONSECRET='this can be anything you like'
-export URL=http://localhost:3000/
-```
-
-To use the 'forgot your password' functionality, store additional local environmental variables for an email account:
-
-```
-export NMHOST='this is the host of the email account, for example, smtp.office365.com'
-export NMPASS='this is the email account password'
-export NMPORT='this is the port for the host, typically 587 but can vary'
-export NMUSER='this is the email address itself'
-```
-
-## Local Usage
-
-In that same location, in Terminal:
-
-`npm start`
+docker-compose up
 
 Then in the browser of your choice:
 
@@ -73,7 +30,7 @@ Then in the browser of your choice:
 
 ## Running tests
 
-`npm test`
+To be added
 
 ## Linting
 

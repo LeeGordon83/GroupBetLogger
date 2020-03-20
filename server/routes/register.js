@@ -1,5 +1,5 @@
-const Register = require('../../lib/registration')
-const find = require('../../lib/find')
+const Register = require('../lib/registration')
+const find = require('../lib/find')
 
 module.exports = {
   get: (req, res) => {
