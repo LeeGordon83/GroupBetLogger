@@ -1,11 +1,13 @@
 const db = require('../../models')
 const encryptor = require('../encryption')
 
-async function register (email, password) {
-  const hash = await encryptor.encryptString(password)
+async function register (user) {
+  const hash = await encryptor.encryptString(user.body.password)
   return db.users.create({
-    email: email,
-    password: hash
+    email: user.body.email,
+    password: hash,
+    firstname: user.body.firstname,
+    surname: user.body.surname
   })
 }
 
