@@ -1,4 +1,5 @@
 // take values from environment variables using defaults if not present
+require('dotenv').config()
 const dbConfig = {
   username: process.env.POSTGRES_USERNAME,
   password: process.env.POSTGRES_PASSWORD,
