@@ -13,9 +13,9 @@ module.exports = {
     const user = await find.findEmail(email)
 
     if (user !== null && user !== undefined) {
-      if (await encryption.compare(password, user.password)) {
+      if (await encryption.isMatch(password, user.password)) {
         res.render('main.ejs', {
-          user: user.email
+          user: user.firstname + ' ' + user.surname
         }
         )
       } else {
