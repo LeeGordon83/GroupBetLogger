@@ -3,8 +3,7 @@ const find = require('../lib/find')
 
 module.exports = {
   get: (req, res) => {
-    res.render('login.ejs', {
-      flash: res.locals.flash })
+    res.render('login.ejs')
   },
 
   post: async (req, res) => {
@@ -19,16 +18,14 @@ module.exports = {
         }
         )
       } else {
-        req.session.flash = {
-          message: 'Invalid password'
-        }
-        res.redirect('/login')
+        res.render('login.ejs', {
+          error: 'Invalid Password'
+        })
       }
     } else {
-      req.session.flash = {
-        message: 'Invalid user name'
-      }
-      res.redirect('/login')
+      res.render('login.ejs', {
+        error: 'Invalid Username'
+      })
     }
   }
 }

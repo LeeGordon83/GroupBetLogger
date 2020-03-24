@@ -15,7 +15,6 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('./public'))
 app.use(session(require('./server/plugins/session')))
-app.use(require('./server/plugins/flash'))
 
 /**
  * Routes Definitions
