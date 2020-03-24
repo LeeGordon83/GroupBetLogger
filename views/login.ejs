@@ -10,6 +10,7 @@
     <a id='forgot-password' class='right' href=/forgot-password>Forgot your password?</a> |
     <a id='register' class='right' href=/register>Register</a>
     </div>
-    <% if (flash && flash.message) { %><div id='flash'><%= flash.message %></div><% } %>
+    <% if (typeof error !== "undefined") { %><div id='flash'><%= error %></div><% } %>
+
   </content>
 

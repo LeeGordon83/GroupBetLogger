@@ -3,8 +3,7 @@ const find = require('../lib/find')
 
 module.exports = {
   get: (req, res) => {
-    res.render('register.ejs', {
-      flash: res.locals.flash })
+    res.render('register.ejs')
   },
 
   post: async (req, res) => {
@@ -12,10 +11,9 @@ module.exports = {
     const user = await find.findEmail(usermail)
 
     if (user !== null && user !== undefined) {
-      req.session.flash = {
-        message: 'There is already an account with that email.'
-      }
-      res.redirect('/register')
+      res.render('register.ejs', {
+        error: 'Email is already registered please login'
+      })
     } else {
       const newUser = await Register.register(req)
       req.session.user = newUser.id
