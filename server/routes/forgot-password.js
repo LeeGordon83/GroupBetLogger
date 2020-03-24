@@ -10,16 +10,14 @@ module.exports = {
     const email = req.body.email
     const results = await find.findEmail(email)
 
-    if (results === null && results === undefined) {
-      req.session.flash = {
-        message: 'Invalid user name'
-      }
-      res.redirect('/forgot-password')
+    if (results !== null && results !== undefined) {
+      res.render('/forgot-password', {
+        error: 'Password reset email has been sent.'
+      })
     } else {
-      req.session.flash = { 
-        message: 'Email sent'
-      }   
-      res.redirect('/forgot-password')
-      }
+        res.render('/forgot-password', {
+          error: 'Email is inccorect. Please try again'
+      })
     }
   }
+}
