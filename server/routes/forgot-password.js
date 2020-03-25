@@ -11,11 +11,11 @@ module.exports = {
     const results = await find.findEmail(email)
 
     if (results !== null && results !== undefined) {
-      res.render('/forgot-password', {
+      res.render('forgot-password.ejs', {
         error: 'Password reset email has been sent.'
       })
     } else {
-        res.render('/forgot-password', {
+        res.render('forgot-password.ejs', {
           error: 'Email is inccorect. Please try again'
       })
     }

@@ -29,7 +29,7 @@ app.get('/register', require('./server/routes/register').get)
 app.post('/register', require('./server/routes/register').post)
 
 app.get('/forgot-password', require('./server/routes/forgot-password').get)
-/*app.post('/register', require('./server/routes/register').post)*/
+app.post('/forgot-password', require('./server/routes/forgot-password').post)
 
 app.get('/main', require('./server/routes/main'))
 
