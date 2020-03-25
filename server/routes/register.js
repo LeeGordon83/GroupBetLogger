@@ -1,27 +1,24 @@
-const Register = require('../../lib/registration')
-const find = require('../../lib/find')
+const Register = require('../lib/registration')
+const find = require('../lib/find')
 
 module.exports = {
   get: (req, res) => {
-    res.render('register.ejs', {
-      flash: res.locals.flash })
+    res.render('register.ejs')
   },
 
   post: async (req, res) => {
     const usermail = req.body.email
-    const password = req.body.password
-    const results = await find.findEmail(usermail)
+    const user = await find.findEmail(usermail)
 
-    if (results !== null && results !== undefined) {
-      req.session.flash = {
-        message: 'There is already an account with that email.'
-      }
-      res.redirect('/register')
+    if (user !== null && user !== undefined) {
+      res.render('register.ejs', {
+        error: 'Email is already registered please login'
+      })
     } else {
-      const newUser = await Register.register(usermail, password)
+      const newUser = await Register.register(req)
       req.session.user = newUser.id
       res.render('main.ejs', {
-        user: newUser.email
+        user: newUser.firstname + ' ' + newUser.surname
       }
       )
     }
