@@ -1,4 +1,4 @@
-const find = require('../../lib/find')
+const find = require('../lib/find')
 
 module.exports = {
   get: (req, res) => {
@@ -8,15 +8,15 @@ module.exports = {
 
   post: async (req, res) => {
     const email = req.body.email
-    const results = await find.findEmail(email)
+    const user = await find.findEmail(email)
 
-    if (results !== null && results !== undefined) {
+    if (user !== null && user !== undefined) {
       res.render('forgot-password.ejs', {
-        error: 'Password reset email has been sent.'
+        error: 'Password reset email has been sent to' + user.email
       })
     } else {
         res.render('forgot-password.ejs', {
-          error: 'Email is inccorect. Please try again'
+          error: 'Email is inccorect. Please try again.'
       })
     }
   }
