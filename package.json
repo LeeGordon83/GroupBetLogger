@@ -5,10 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon ./app.js"
+    "dev": "nodemon ./app.js",
+    "migrate": "sequelize db:migrate"
   },
   "keywords": [],
-  "author": "",
+  "author": "Lee Gordon, Scott Dormand",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.26.7",

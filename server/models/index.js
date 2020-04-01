@@ -1,12 +1,10 @@
 const fs = require('fs')
 const path = require('path')
 const Sequelize = require('sequelize')
-const basename = path.basename(module.filename)
-const env = require('../../config').env
-const config = require('../../config').dbConfig[env]
+const basename = path.basename(__filename)
+const env = require('../config').env
+const config = require('../config/config.js')[env]
 const db = {}
-
-console.log(config)
 
 let sequelize
 if (config.use_env_variable) {

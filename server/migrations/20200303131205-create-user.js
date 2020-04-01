@@ -24,6 +24,15 @@ module.exports = {
       updatedAt: {
         allowNull: 0,
         type: Sequelize.DATE
+      },
+      groupId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'group',
+          key: 'id',
+          as: 'groupId'
+        }
       }
     })
   },
