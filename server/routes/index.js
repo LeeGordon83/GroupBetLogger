@@ -1,4 +1,5 @@
-module.exports = (_, res) => {
-  res.render('index.ejs'
+
+module.exports = (req, res) => {
+  res.render('login.ejs'
   )
 }

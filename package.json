@@ -2,11 +2,11 @@
   "name": "groupbetlogger",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon ./app.js",
-    "migrate": "sequelize db:migrate"
+    "start": "nodemon",
+    "dev": "nodemon ./index.js",
+    "migrate": "npx sequelize-cli db:migrate"
   },
   "keywords": [],
   "author": "Lee Gordon, Scott Dormand",
@@ -19,6 +19,7 @@
   "dependencies": {
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",

@@ -155,18 +155,6 @@ a {
   box-shadow: var(--ui-shadow);
 }
 
-.WelcomeView {
-  background-image: 
-  linear-gradient(
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5)
-  ),
-   url('/images/footy5.jpg') ;
-
-  background-size: cover;
- 
-}
-
 content {
   display: block;
   margin: 0 auto;
@@ -181,7 +169,7 @@ content {
   display: block;
   max-width: 394px;
   padding: 0 4px;
-
+  text-align: center;
   
 }
 
@@ -215,6 +203,7 @@ input.authenticate  {
   max-width: 394px;
   padding-top: 20px;
   color: white;
+  text-align: center;
 }
 
 
@@ -243,3 +232,16 @@ input[type='submit'],
   color: white;
   margin-top: 20px;
 }
+
+/* Set a background image by replacing the URL below */
+body {
+  background-image: 
+  linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),
+   url('/images/footy5.jpg') ;
+
+  background-size: cover;
+}
+

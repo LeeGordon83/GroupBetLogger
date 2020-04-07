@@ -15,6 +15,7 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('./public'))
 app.use(session(require('./server/plugins/session')))
+app.use('/css', express.static('./node_modules/bootstrap/dist/css'))
 
 /**
  * Routes Definitions

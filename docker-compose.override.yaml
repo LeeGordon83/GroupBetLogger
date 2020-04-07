@@ -12,7 +12,5 @@ services:
     command: >
       sh -c "
         scripts/wait-for/wait-for group-bet-logger-postgres:5432 --
-        npm run migrate "
-    ports:
-      - "3004:3004"
-      - "9324:9324"
+        npm run migrate && npm start"
+
