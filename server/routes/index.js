@@ -1,5 +1,10 @@
 
 module.exports = (req, res) => {
-  res.render('login.ejs'
-  )
+  if (!req.session.user) {
+    res.render('login.ejs'
+    )
+  }
+  res.render('main.ejs', {
+    user: req.session.user.firstname + ' ' + req.session.user.surname
+  })
 }

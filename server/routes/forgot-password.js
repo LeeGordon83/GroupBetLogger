@@ -12,11 +12,11 @@ module.exports = {
 
     if (user !== null && user !== undefined) {
       res.render('forgot-password.ejs', {
-        error: 'Password reset email has been sent to' + user.email
+        error: 'Password reset email has been sent to ' + user.email
       })
     } else {
-        res.render('forgot-password.ejs', {
-          error: 'Email is inccorect. Please try again.'
+      res.render('forgot-password.ejs', {
+        error: 'Email is inccorect. Please try again.'
       })
     }
   }

@@ -13,6 +13,7 @@ module.exports = {
 
     if (user !== null && user !== undefined) {
       if (await encryption.isMatch(password, user.password)) {
+        req.session.user = user
         res.render('main.ejs', {
           user: user.firstname + ' ' + user.surname
         }
