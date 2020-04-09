@@ -22,5 +22,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   })
 
+  user.associate = (models) => {
+    user.belongsTo(models.group, {
+      foreignKey: 'id',
+      onDelete: 'CASCADE'
+    })
+  }
+
   return user
 }

@@ -1,4 +1,12 @@
-<content>    
+ 
+      <div class="jumbotron">
+        <h1>Group Bet Logger</h1>
+        <p class="lead">Bet Together, Win Together!</p>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
     <form id='authenticate' action='/register' autocomplete='off' method='POST'>
       <input class='authenticate' type='firstname' name='firstname' placeholder='First Name' required>
       <input class='authenticate' type='surname' name='surname' placeholder='Surname' required>
@@ -9,5 +17,7 @@
       <input class='NavButton centre' form='authenticate' type='submit' value='Register'>
     </div>
     <% if (typeof error !== "undefined") { %><div id='flash'><%= error %></div><% } %>
-  </content>
-
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
