@@ -56,7 +56,7 @@ app.get('/groups', require('./server/routes/groups').get)
 
 app.get('/logout', require('./server/routes/logout'))
 
-app.get('/main', require('./server/routes/main'))
+app.get('/main', require('./server/routes/main').get)
 
 /**
  * Server Activation
