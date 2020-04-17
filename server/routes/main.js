@@ -1,4 +1,3 @@
-module.exports = {
-  get: (req, res) => {
-    res.render('main.ejs')
-  } }
+module.exports = (req, res) => {
+  res.render('/main')
+}
