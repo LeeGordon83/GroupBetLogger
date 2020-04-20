@@ -25,7 +25,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    expires: 30000
+    expires: 300000000000
   }
 }))
 
@@ -38,10 +38,17 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use(function (req, res, next) {
+  res.locals.user = req.session.user
+  next()
+})
+
 /**
  * Routes Definitions
  */
 app.get('/', require('./server/routes/index'))
+
+app.get('/main', require('./server/routes/main'))
 
 app.get('/login', require('./server/routes/login').get)
 app.post('/login', require('./server/routes/login').post)
