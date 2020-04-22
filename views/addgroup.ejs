@@ -1,0 +1,57 @@
+
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+    <form class='form-horizontal' action='/addgroup' autocomplete='off' method='POST' name='form' id="form">
+      <div class="input-group">
+      <input class='authenticate' type='groupname' name='groupname' id='groupname' placeholder='Group Name' required>
+      <select class='authenticate' name="select1" id="select1" onchange="myFunction(event)">
+        <option value="" disabled selected>Add User</option>
+        <% for (const id in usersFound) { %>
+          <option value="<%= usersFound[id].id %>"><%= usersFound[id].firstname %> <%= usersFound[id].surname %></option>
+        <% } %>
+      </select>
+    </div>
+    </form>
+    <div id='auth-container'>
+      <input class='NavButton centre' id='removeLast' form='authenticate' type='submit' hidden='hidden' value='Remove Last'>
+    </div>
+    <div id='auth-container'>
+      <input class='NavButton centre' form='authenticate' type='submit' value='Add Group'>
+    </div>
+    <% if (typeof error !== "undefined") { %><div id='flash'><%= error %></div><% } %>
+  </div>
+  <div class="col-md-4">
+
+  </div>
+</div>
+
+<script type="text/javascript">
+
+var picked = [];
+
+function myFunction(e) {
+    var original = $('select.authenticate:eq(0)');
+    var allSelects = $('select.authenticate');
+    var clone = original.clone();
+    var pickedNum = picked.length +1;
+
+    picked.push($('#select'+pickedNum + ' :selected').val());
+
+    $('#select'+pickedNum).prop("disabled",true);
+
+    pickedNum = pickedNum + 1;
+
+    clone.prop('id', 'select'+ pickedNum);
+
+    $('option', clone).filter(function(i) {
+        return allSelects.find('option:selected[value="' + $(this).val() + '"]').length;
+    }).remove();
+
+    
+
+    $('form').append(clone).append('<br />');
+};
+
+</script>

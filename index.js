@@ -2,6 +2,7 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
+const crypto = require('crypto')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const port = process.env.PORT
@@ -21,7 +22,7 @@ app.use(cookieParser())
 // initialize express-session to allow us track the logged-in user across sessions.
 app.use(session({
   key: 'user_sid',
-  secret: 'somerandomstuffs',
+  secret: crypto.randomBytes(64).toString('hex'),
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -53,6 +54,8 @@ app.get('/forgot-password', require('./server/routes/forgot-password').get)
 app.post('/forgot-password', require('./server/routes/forgot-password').post)
 
 app.get('/groups', require('./server/routes/groups').get)
+
+app.get('/addgroup', require('./server/routes/addgroup').get)
 
 app.get('/logout', require('./server/routes/logout'))
 
