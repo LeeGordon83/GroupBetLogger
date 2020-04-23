@@ -5,4 +5,10 @@ module.exports = {
     const users = await find.findAll()
     console.log(users)
     res.render('addgroup.ejs', { usersFound: users })
-  } }
+  },
+
+  post: async (req, res) => {
+    res.render('groups.ejs')
+  }
+
+}
