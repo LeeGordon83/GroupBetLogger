@@ -1,45 +1,33 @@
 const fs = require('fs')
-const fastCsv = require('fast-csv')
+const csv = require('fast-csv')
+const db = require('../../models')
+const http = require('http')
 
-async function latestFixtures () {
-  let stream = fs.createReadStream("http://www.football-data.co.uk/fixtures.csv");
-  let csvData = [];
-  let csvStream = fastcsv
-    .parse()
-    .on("data", function (data) {
-      csvData.push(data);
+const fixtures = []
+
+function getLatestFixtures () {
+  http.get('http://www.football-data.co.uk/fixtures.csv', response => {
+    response.pipe(fs.createWriteStream('fixtures.csv')
+      .on('finish', () => {
+        csv.parseFile('fixtures.csv')
+          .on('data', row => {
+            fixtures.push(row)
+          })
+          .on('end', async () => {
+            await saveFixturesToDatabase()
+          })
+      }))
+  })
+}
+
+function saveFixturesToDatabase () {
+  fixtures.shift()
+  fixtures.forEach(async fixture => {
+    await db.fixtures.upsert({
+      division: fixture[0],
+      date: fixture[1]
     })
-    .on("end", function () {
-      csvData.shift();
-
-      const query = INSERT INTO fixtures (division, date, time, homeTeam, awayTeam, williamHillHome, williamHillDraw, williamHillAway)
-                    VALUES ($1, $2, $3, $4, $5, $24, $25, $26);
-
-      pool connect((err, client, done) => {
-        if(err) throw err;
-        
-        try {
-          csvData.forEach(row => {
-            client.query(query, row, (err, res) => {
-              if (err) {
-                console.log(err.stack);
-              } else {
-                console.log("inserted " = res.rowCount = " row", row);
-              }
-            });
-          });
-        } finally {
-          done();
-        }
-      });
-    });
-
-  stream.pipe(csvStream);
-
-  console.log(fixtures);
-  return fixtures
+  })
 }
 
-module.exports = {
-  latestFixtures
-}
+module.exports = getLatestFixtures

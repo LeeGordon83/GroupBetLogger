@@ -4,39 +4,39 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: 0,
       autoIncrement: 1,
       primaryKey: 1,
-      type: Sequelize.INTEGER
+      type: DataTypes.INTEGER
     },
     division: {
-      type: Sequelize.STRING,
-      allowNull: 0,
+      type: DataTypes.STRING,
+      allowNull: 0
     },
     date: {
       allowNull: 0,
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     },
     time: {
       allowNull: 0,
-      type: Sequelize.TIME
+      type: DataTypes.TIME
     },
     homeTeam: {
-      type: Sequelize.STRING,
-      allowNull: 0,
+      type: DataTypes.STRING,
+      allowNull: 0
     },
     awayTeam: {
-      type: Sequelize.STRING,
-      allowNull: 0,
+      type: DataTypes.STRING,
+      allowNull: 0
     },
     williamHillHome: {
-      type: Sequelize.DECIMAL,
-      allowNull: 0,
+      type: DataTypes.DECIMAL,
+      allowNull: 0
     },
     williamHillDraw: {
-      type: Sequelize.DECIMAL,
-      allowNull: 0,
+      type: DataTypes.DECIMAL,
+      allowNull: 0
     },
     williamHillAway: {
-      type: Sequelize.DECIMAL,
-      allowNull: 0,
+      type: DataTypes.DECIMAL,
+      allowNull: 0
     }
   })
 
