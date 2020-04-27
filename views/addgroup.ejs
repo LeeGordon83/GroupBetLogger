@@ -38,10 +38,12 @@
     var pickedId = $('#select' + pickedNum + ' :selected').val();
     var selectlength = $('#select1 option').length - 1;
 
+
+    picked.push(pickedId);
+
     if (pickedNum < selectlength) {
       var clone = original.clone();
 
-      picked.push(pickedId);
 
       $('#select' + pickedNum).prop("disabled", true);
 
@@ -76,23 +78,11 @@
   };
 
   function submitGroup(e) {
-    e.preventDefault(); 
-    alert
-    $('#myForm').submit(function () {
-      
-      $(this).ajaxSubmit({
-        error: function (xhr) {
-          status('Error: ' + xhr.status);
-        },
-
-
-        success: function (response) {
-          $("#status").empty().text(response);
-          console.log(response);
-        }
-      });
-      //Code to disable the page refresh.
-      return false;
-    });
-  };
+     e.preventDefault()
+  
+     $.post('/addgroup', {
+      formdata: $('#my_form').serializeArray() ,
+      pickedArray: picked
+    })
+   }
 </script>

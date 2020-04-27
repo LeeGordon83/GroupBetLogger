@@ -56,7 +56,7 @@ app.post('/forgot-password', require('./server/routes/forgot-password').post)
 app.get('/groups', require('./server/routes/groups').get)
 
 app.get('/addgroup', require('./server/routes/addgroup').get)
-app.get('/addgroup', require('./server/routes/addgroup').post)
+app.post('/addgroup', require('./server/routes/addgroup').post)
 
 app.get('/logout', require('./server/routes/logout'))
 
