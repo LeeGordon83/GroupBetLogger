@@ -1,9 +1,8 @@
 const db = require('../../models')
 
-async function create (group) {
-  console.log(group)
+async function create (groupname) {
   return db.group.create({
-    groupname: group.body.formdata.value
+    groupname: groupname
   })
 }
 

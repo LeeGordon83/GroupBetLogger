@@ -1,5 +1,5 @@
 const find = require('../lib/find')
-// const Group = require('../lib/group')
+const Group = require('../lib/group')
 
 module.exports = {
   get: async (req, res) => {
@@ -8,9 +8,14 @@ module.exports = {
   },
 
   post: async (req, res) => {
-    console.log(req.body.formdatayea)
-
-    // await Group.create(req)
+    const groupname = req.body.formdata[0].value
+    const users = []
+    req.body.pickedArray.forEach(async function (item) {
+      const user = await find.findUser(item)
+      users.push(user)
+    })
+    console.log(users)
+    await Group.create(groupname, users)
     res.redirect('/group')
   }
 

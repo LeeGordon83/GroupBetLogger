@@ -3,11 +3,8 @@ module.exports = (sequelize, DataTypes) => {
     groupname: DataTypes.STRING,
     allowNull: false
   }, {})
-  group.associate = (models) => {
-    group.hasMany(models.users, {
-      foreignKey: 'id',
-      as: 'users'
-    })
+  group.associate = function (models) {
+    group.belongsToMany(models.users, { through: 'usergroups', foreignKey: 'userId', as: 'users' })
   }
   return group
 }
