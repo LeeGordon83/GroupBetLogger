@@ -25,7 +25,13 @@ function saveFixturesToDatabase () {
   fixtures.forEach(async fixture => {
     await db.fixtures.upsert({
       division: fixture[0],
-      date: fixture[1]
+      date: fixture[1],
+      time: fixture[2],
+      homeTeam: fixture[3],
+      awayTeam: fixture[4],
+      williamHillHome: fixture[23],
+      williamHillDraw: fixture[24],
+      williamHillAway: fixture[25]
     })
   })
 }
