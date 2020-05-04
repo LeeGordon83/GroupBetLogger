@@ -1,15 +1,17 @@
 const db = require('../../models')
 
 async function create (groupname, users) {
-  const group = db.group.create({
+  const group = await db.group.create({
     groupname: groupname
   })
-  users.forEach(async function (item) {
-    db.usergroups.create({
-      groupId: group.groupId,
-      userId: item.userId
+
+  await users.map(async function (item) {
+    db.UserGroups.create({
+      groupId: group.id,
+      userId: item.dataValues.id
     })
   })
+  return group
 }
 
 module.exports = {

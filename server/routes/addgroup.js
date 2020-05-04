@@ -9,16 +9,19 @@ module.exports = {
 
   post: async (req, res) => {
     const groupname = req.body.formdata[0].value
-    const users = []
-    await Promise.all([
-      req.body.pickedArray.forEach(async function (item) {
-        const user = await find.findUser(item)
-        users.push(user)
-      })
-    ])
-    console.log(users)
+
+    const pickedArray = req.body.pickedArray
+
+    const users = pickedArray.map(async function (item) {
+      const user = await find.findUser(item)
+      users.push(user)
+    })
+
+    await Promise.all(users)
+
     await Group.create(groupname, users)
-    res.redirect('/group')
+
+    res.render('groups.ejs')
   }
 
 }

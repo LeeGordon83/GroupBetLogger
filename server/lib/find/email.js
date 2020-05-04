@@ -6,7 +6,6 @@ async function findEmail (email) {
       email: email
     }
   })
-  console.log(emailFound)
   return emailFound
 }
 
