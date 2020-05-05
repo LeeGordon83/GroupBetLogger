@@ -36,4 +36,6 @@ function saveFixturesToDatabase () {
   })
 }
 
-module.exports = getLatestFixtures
+module.exports = {
+  getLatestFixtures
+}
