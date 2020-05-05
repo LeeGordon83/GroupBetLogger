@@ -1,5 +1,5 @@
-const { create } = require('./create')
+const { createGroupsWithUsers } = require('./create-groups-with-users')
 
 module.exports = {
-  create
+  createGroupsWithUsers
 }

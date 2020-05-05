@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     allowNull: false
   }, {})
   group.associate = function (models) {
-    group.belongsToMany(models.users, { through: 'UserGroups', foreignKey: 'userId', as: 'users' })
+    group.belongsToMany(models.users, { through: 'UserGroups', foreignKey: 'userId', as: 'users', onDelete: 'CASCADE' })
   }
   return group
 }

@@ -17,9 +17,7 @@ module.exports = {
       users.push(user)
     })
 
-    await Promise.all(users)
-
-    await Group.create(groupname, users)
+    await Group.createGroupsWithUsers(groupname, users)
 
     res.render('groups.ejs')
   }
