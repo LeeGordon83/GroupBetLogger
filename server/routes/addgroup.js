@@ -1,5 +1,7 @@
 const find = require('../lib/find')
-const Group = require('../lib/group')
+const { createGroupsWithUsers } = require('../lib/group')
+
+const users = []
 
 module.exports = {
   get: async (req, res) => {
@@ -12,12 +14,14 @@ module.exports = {
 
     const pickedArray = req.body.pickedArray
 
-    const users = pickedArray.map(async function (item) {
-      const user = await find.findUser(item)
-      users.push(user)
-    })
+    await Promise.all(
+      pickedArray.map(async function (item) {
+        const user = await find.findUser(item)
+        users.push(user)
+      })
+    )
 
-    await Group.createGroupsWithUsers(groupname, users)
+    await createGroupsWithUsers(groupname, users)
 
     res.render('groups.ejs')
   }

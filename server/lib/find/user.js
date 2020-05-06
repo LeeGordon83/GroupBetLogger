@@ -2,12 +2,10 @@ const db = require('../../models')
 
 async function findUser (id) {
   const user = await db.users.findOne({
-    where: {
-      id: id
-    }
+    where: { id }
   })
 
-  return user
+  return user.dataValues
 }
 
 module.exports = {

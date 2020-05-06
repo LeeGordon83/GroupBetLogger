@@ -16,7 +16,7 @@ async function createUserGroups (groupId, users) {
 async function createUserGroup (groupId, user) {
   return db.UserGroups.create({
     groupId: groupId,
-    userId: user.dataValues.id
+    userId: user.id
   })
 }
 
