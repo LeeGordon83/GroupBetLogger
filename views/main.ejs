@@ -1,4 +1,7 @@
   <div class="panel panel-info" style="background-color: white">
     <div class="panel-heading">Fixtures</div>
     <div class="panel-body">Fixtures</div>
+    <% for (const id in fixturesFound) { %>
+      <div><%= fixturesFound[id].awayTeam %></div>:<div><%= fixturesFound[id].awayTeam %></div>
+      <% } %>
   </div>
