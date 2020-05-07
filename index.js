@@ -39,10 +39,17 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use(function (req, res, next) {
+  res.locals.user = req.session.user
+  next()
+})
+
 /**
  * Routes Definitions
  */
 app.get('/', require('./server/routes/index'))
+
+app.get('/main', require('./server/routes/main').get)
 
 app.get('/login', require('./server/routes/login').get)
 app.post('/login', require('./server/routes/login').post)
@@ -60,11 +67,10 @@ app.post('/addgroup', require('./server/routes/addgroup').post)
 
 app.get('/logout', require('./server/routes/logout'))
 
+
 app.get('/main', require('./server/routes/main').get)
 
-/**
- * Server Activation
- */
+
 
 app.listen(port)
 

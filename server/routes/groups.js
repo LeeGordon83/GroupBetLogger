@@ -1,4 +1,5 @@
 module.exports = {
   get: (req, res) => {
-    res.render('groups.ejs')
-  } }
+    req.session.user ? res.render('groups.ejs') : res.redirect('/login')
+  }
+}
