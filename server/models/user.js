@@ -22,11 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   })
 
-  user.associate = (models) => {
-    user.belongsTo(models.group, {
-      foreignKey: 'id',
-      onDelete: 'CASCADE'
-    })
+  user.associate = function (models) {
+    user.belongsToMany(models.group, { through: 'UserGroups', foreignKey: 'groupId', as: 'groups', onDelete: 'CASCADE' })
   }
 
   return user

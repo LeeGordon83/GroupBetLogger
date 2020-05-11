@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+    <h1 style='color:white; text-align: center;'>Add Group</h1>
+    <form class='form-horizontal beanForm' autocomplete='off'  name='form' id="my_form" enctype="multipart/form-data" action="/addgroup" method="post">
+      <input class='authenticate' type='groupname' name='groupname' id='groupname' placeholder='Group Name' required>
+      <select class='authenticate select1' name="select1" id="select1" onchange="addFunction(event)">
+        <option value="" disabled selected>Select User</option>
+        <% for (const id in usersFound) { %>
+        <option value="<%= usersFound[id].id %>"><%= usersFound[id].firstname %> <%= usersFound[id].surname %></option>
+        <% } %>
+      </select>
+    </form>
+    <div id='auth-container'>
+      <input class='NavButton centre' id='removeLast' name='removeLast' form='authenticate' type='submit'
+        style='display: none;' value='Remove Last' onclick="removeFunction(event)">
+    </div>
+    <div id='auth-container'>
+      <input class='NavButton centre' form='my_form' type='submit' value='Add Group' onclick="submitGroup(event)">
+    </div>
+    <% if (typeof error !== "undefined") { %><div id='flash'><%= error %></div><% } %>
+  </div>
+  <div class="col-md-4">
+
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  var picked = [];
+  var lastGenerated;
+  var pickedNum = picked.length + 1;
+
+  function addFunction(e) {
+    var original = $('select.select' + pickedNum + ':eq(0)');
+    var allSelects = $('select.select' + pickedNum);
+    var pickedId = $('#select' + pickedNum + ' :selected').val();
+    var selectlength = $('#select1 option').length - 1;
+
+
+    picked.push(pickedId);
+
+    if (pickedNum < selectlength) {
+      var clone = original.clone();
+
+
+      $('#select' + pickedNum).prop("disabled", true);
+
+      pickedNum = pickedNum + 1;
+
+      clone.prop('class', 'authenticate select' + pickedNum);
+      clone.prop('id', 'select' + pickedNum);
+      clone.prop('name', 'select' + pickedNum);
+
+      clone.find('option[value=' + pickedId + ']').attr('disabled', 'disabled')
+      //$('#removeLast').show();
+
+      $('form').append(clone).append('<br />');
+    }
+  };
+
+  function removeFunction(e) {
+
+    var lastNum = picked.length;
+
+    picked.pop();
+
+    $(".select" + pickedNum).remove();
+
+    $('#select' + lastNum).prop("disabled", false);
+
+    pickedNum = picked.length;
+
+    if (pickedNum === 1) {
+      $('#removeLast').hide();
+    }
+  };
+
+  function submitGroup(e) {
+     e.preventDefault()
+  
+     $.post('/addgroup', {
+      formdata: $('#my_form').serializeArray() ,
+      pickedArray: picked
+    })
+   }
+</script>
