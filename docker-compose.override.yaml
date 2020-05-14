@@ -3,14 +3,44 @@ version: '3.7'
 # This override file should be used when running this service in isolation
 # to provide required sibling services for local testing
 
-services:
-  group-bet-logger:
-    build:
-      context: .
-      target: development
-    image: groupbetlogger
-    command: >
-      sh -c "
-        scripts/wait-for/wait-for group-bet-logger-postgres:5432 --
-        npm run migrate && npm start"
-
+        version: '3.7'
+        services:
+          group-bet-logger:
+            build: 
+              context: .
+              target: production
+            image: groupbetlogger
+            depends_on:
+              - group-bet-logger-postgres
+            environment:
+              POSTGRES_DB: groupbetlogger_development
+              POSTGRES_PASSWORD: password
+              POSTGRES_USERNAME: postgres
+              POSTGRES_HOST: group-bet-logger-postgres
+              POSTGRES_PORT: 5432
+              PORT: 3000
+              SESSIONSECRET: 'test'
+            volumes:
+              - ./server/:/home/node/server/
+              - ./config/:/home/node/migrations/
+              - ./views/:/home/node/views/
+              - ./index.js:/home/node/index.js
+              - ./package.json:/home/node/package.json
+            ports:
+              - "3000:3000"
+              - "9229:9229"
+        
+          group-bet-logger-postgres:
+            image: postgres:11.4-alpine
+            environment:
+              POSTGRES_DB: groupbetlogger_development
+              POSTGRES_PASSWORD: password
+              POSTGRES_USERNAME: postgres
+            volumes:
+              - postgres_data:/var/lib/postgresql/data
+            ports:
+              - "5432:5432"
+        
+        volumes:
+          postgres_data: {}
+        

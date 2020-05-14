@@ -31,7 +31,9 @@ function saveFixturesToDatabase () {
       awayTeam: fixture[4],
       williamHillHome: fixture[23],
       williamHillDraw: fixture[24],
-      williamHillAway: fixture[25]
+      williamHillAway: fixture[25],
+      createdAt: Date.now(),
+      updatedAt: Date.now()
     })
   })
 }

@@ -38,6 +38,14 @@ module.exports = {
       williamHillAway: {
         type: Sequelize.DECIMAL,
         allowNull: 0,
+      },
+      createdAt: {
+        allowNull: 0,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: 0,
+        type: Sequelize.DATE
       }
     })
   },
