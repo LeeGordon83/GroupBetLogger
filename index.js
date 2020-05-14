@@ -26,7 +26,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    expires: 30000
+    expires: 300000
   }
 }))
 
@@ -67,10 +67,7 @@ app.post('/addgroup', require('./server/routes/addgroup').post)
 
 app.get('/logout', require('./server/routes/logout'))
 
-
 app.get('/main', require('./server/routes/main').get)
-
-
 
 app.listen(port)
 

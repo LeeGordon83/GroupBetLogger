@@ -1,9 +1,24 @@
 
-
-  <div class="panel panel-info" style="background-color: white">
-    <div class="panel-heading">Groups</div>
-    <div class="panel-body">Groups</div>
+<div class="row">
+  <div class="col-md-4">
   </div>
+  <div class="col-md-4">
+    <h1 style='color:white; text-align: center;'>Groups</h1>
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
+
+<% for (const group in groups) { %>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading" style='text-align: center;'><%= groups[group].dataValues.groupname %></div>
+      <div class="panel-body">
+        </div>
+    </div>
+  </div>
+    <% } %>
+
   <div id='auth-container'>
     <h2><a id='addgroup' class='right' style='color:white' href=/addgroup>Add Group</a></h1>
   </div>

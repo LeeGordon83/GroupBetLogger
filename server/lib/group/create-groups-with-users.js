@@ -1,12 +1,12 @@
 const db = require('../../models')
 
-async function createGroupsWithUsers (groupName, users) {
-  const group = await createGroup(groupName)
+async function createGroupsWithUsers (groupname, users) {
+  const group = await createGroup(groupname)
   await createUserGroups(group.id, users)
 }
 
-async function createGroup (groupName) {
-  return db.group.create({ groupName })
+async function createGroup (groupname) {
+  return db.group.create({ groupname })
 }
 
 async function createUserGroups (groupId, users) {

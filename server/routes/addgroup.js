@@ -10,6 +10,8 @@ module.exports = {
   },
 
   post: async (req, res) => {
+    console.log(req.body)
+
     const groupname = req.body.formdata[0].value
 
     const pickedArray = req.body.pickedArray
