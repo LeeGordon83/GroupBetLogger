@@ -1,5 +1,11 @@
+const findGroups = require('../lib/group')
+let groups = []
+
 module.exports = {
-  get: (req, res) => {
-    req.session.user ? res.render('groups.ejs') : res.redirect('/login')
+  get: async (req, res) => {
+    if (req.session.user !== undefined) {
+      groups = await findGroups.findGroupsWithUser(req.session.user.id)
+    }
+    req.session.user ? res.render('groups.ejs', { groups: groups }) : res.redirect('/login')
   }
 }

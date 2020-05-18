@@ -1,9 +1,37 @@
-
-
-  <div class="panel panel-info" style="background-color: white">
-    <div class="panel-heading">Groups</div>
-    <div class="panel-body">Groups</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <h1 style='color:white; text-align: center;'>Groups</h1>
+    </div>
+    <div class="col-md-4">
+    </div>
   </div>
-  <div id='auth-container'>
-    <h2><a id='addgroup' class='right' style='color:white' href=/addgroup>Add Group</a></h1>
+  <br/>
+  <div class="row">
+    <% for (const group in groups) { %>
+
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading" style='text-align: center;'><%= groups[group].dataValues.groupname %></div>
+          <div class="panel-body"><% for (const user in groups[group].dataValues.users) { %>
+          <div><%= groups[group].dataValues.users[user].dataValues.firstname %> <%= groups[group].dataValues.users[user].dataValues.surname %></div>
+        <% } %></div>
+          </div>
+        </div>    
+
+    <% } %>
   </div>
+
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4" style='text-align: center;' >
+      <h2><a id='addgroup' style='color:white; text-align: center;' href=/addgroup>Add Group</a></h2>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+
+</div>
