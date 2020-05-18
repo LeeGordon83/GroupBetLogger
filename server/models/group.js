@@ -1,13 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
   const group = sequelize.define('group', {
-    groupname: DataTypes.STRING,
-    allowNull: false
+    groupname: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {})
-  group.associate = (models) => {
-    group.hasMany(models.users, {
-      foreignKey: 'id',
-      as: 'users'
-    })
+  group.associate = function (models) {
+    group.belongsToMany(models.users, { through: 'UserGroups', foreignKey: 'groupId', as: 'users', onDelete: 'CASCADE' })
   }
   return group
 }
