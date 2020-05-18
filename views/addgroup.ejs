@@ -84,6 +84,10 @@
      $.post('/addgroup', {
       formdata: $('#my_form').serializeArray() ,
       pickedArray: picked
-    })
+    }).done(function(data){
+
+    window.location.replace('/groups');
+});
+
    }
 </script>
