@@ -2,10 +2,10 @@
     <div class="panel-heading">Fixtures</div>
     <div class="panel-body">Fixtures</div>
     <% for (const id in fixturesFound) { %>
-      <div><%= fixturesFound[id].awayTeam %></div>:<div><%= fixturesFound[id].awayTeam %></div>
+      <div><%= fixturesFound[id].homeTeam %></div>:<div><%= fixturesFound[id].awayTeam %></div>
       <% } %>
   </div>
 
   <div id='auth-container'>
-    <h2><a id='main' class='right' style='color:white' href=/main>Refresh Fixtures</a></h1>
+    <h2><a id='main'style='color:white' href=/refreshFixtures>Refresh Fixtures</a></h1>
   </div>

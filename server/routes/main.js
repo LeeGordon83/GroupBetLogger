@@ -1,5 +1,4 @@
 const find = require('../lib/find')
-const fixtures = require('../lib/fixtures')
 
 module.exports = {
   get: async (req, res) => {

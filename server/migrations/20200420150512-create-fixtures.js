@@ -9,7 +9,7 @@ module.exports = {
       },
       division: {
         type: Sequelize.STRING,
-        allowNull: 0,
+        allowNull: 0
       },
       date: {
         allowNull: 0,
@@ -21,23 +21,23 @@ module.exports = {
       },
       homeTeam: {
         type: Sequelize.STRING,
-        allowNull: 0,
+        allowNull: 0
       },
       awayTeam: {
         type: Sequelize.STRING,
-        allowNull: 0,
+        allowNull: 0
       },
       williamHillHome: {
         type: Sequelize.DECIMAL,
-        allowNull: 0,
+        allowNull: 0
       },
       williamHillDraw: {
         type: Sequelize.DECIMAL,
-        allowNull: 0,
+        allowNull: 0
       },
       williamHillAway: {
         type: Sequelize.DECIMAL,
-        allowNull: 0,
+        allowNull: 0
       },
       createdAt: {
         allowNull: 0,
