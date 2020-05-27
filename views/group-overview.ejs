@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <h1 style='color:white; text-align: center;'><%= groupFound.groupname %></h1>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+  <br/>
+
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 style='text-align: center;'>Group Members</h4>
+            </div>
+            <div class="panel-body"><% for (const user in groupFound.users) { %>
+              <div><%= groupFound.users[user].firstname %> <%= groupFound.users[user].surname %></div>
+            <% } %></div>
+          </div> 
+      </div>
+      <div class="col-md-4">
+      </div>
+  </div>
+
+</div>

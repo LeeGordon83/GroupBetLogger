@@ -11,16 +11,18 @@
   <br/>
   <div class="row">
     <% for (const group in groups) { %>
-
-        <div class="col-md-4">
+    
+      <div class="col-md-4">
           <div class="panel panel-default">
-            <div class="panel-heading" style='text-align: center;'><%= groups[group].dataValues.groupname %></div>
-          <div class="panel-body"><% for (const user in groups[group].dataValues.users) { %>
-          <div><%= groups[group].dataValues.users[user].dataValues.firstname %> <%= groups[group].dataValues.users[user].dataValues.surname %></div>
-        <% } %></div>
-          </div>
-        </div>    
-
+            <div class="panel-heading">
+              <h4><a id='group-overview' style='text-align: center;' href='/<%= groups[group].dataValues.id %>/group-overview'><%= groups[group].dataValues.groupname %></a></h4>
+            </div>
+            <div style='display: none;'><%= groups[group].dataValues.id %></div>
+            <div class="panel-body"><% for (const user in groups[group].dataValues.users) { %>
+              <div><%= groups[group].dataValues.users[user].dataValues.firstname %> <%= groups[group].dataValues.users[user].dataValues.surname %></div>
+            <% } %></div>
+          </div> 
+      </div>
     <% } %>
   </div>
 
@@ -28,7 +30,7 @@
     <div class="col-md-4">
     </div>
     <div class="col-md-4" style='text-align: center;' >
-      <h2><a id='addgroup' style='color:white; text-align: center;' href=/addgroup>Add Group</a></h2>
+      <h2><a id='addgroup' style='color:white; text-align: center;' href=/add-group>Add Group</a></h2>
     </div>
     <div class="col-md-4">
     </div>
