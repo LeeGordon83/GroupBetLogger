@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     date: {
       allowNull: 0,
-      type: DataTypes.DATE
+      type: DataTypes.DATEONLY
     },
     time: {
       allowNull: 0,
-      type: DataTypes.TIME
+      type: DataTypes.STRING
     },
     homeTeam: {
       type: DataTypes.STRING,

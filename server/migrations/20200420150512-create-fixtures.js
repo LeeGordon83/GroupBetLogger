@@ -13,11 +13,11 @@ module.exports = {
       },
       date: {
         allowNull: 0,
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       time: {
         allowNull: 0,
-        type: Sequelize.TIME
+        type: Sequelize.STRING
       },
       homeTeam: {
         type: Sequelize.STRING,

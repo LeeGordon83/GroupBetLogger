@@ -5,7 +5,7 @@ const http = require('http')
 
 const fixtures = []
 
-function getLatestFixtures () {
+async function getLatestFixtures () {
   http.get('http://www.football-data.co.uk/fixtures.csv', response => {
     response.pipe(fs.createWriteStream('fixtures.csv')
       .on('finish', () => {
@@ -20,18 +20,38 @@ function getLatestFixtures () {
   })
 }
 
-function saveFixturesToDatabase () {
+async function saveFixturesToDatabase () {
   fixtures.shift()
   fixtures.forEach(async fixture => {
-    await db.fixtures.upsert({
-      division: fixture[0],
-      date: fixture[1],
-      time: fixture[2],
+    await db.fixtures.findOne({ where: {
+      date: fixture[1].split('/').reverse().join('-'),
       homeTeam: fixture[3],
-      awayTeam: fixture[4],
-      williamHillHome: fixture[23],
-      williamHillDraw: fixture[24],
-      williamHillAway: fixture[25]
+      awayTeam: fixture[4]
+    } }).then(item => {
+      if (!item) {
+        console.log(item)
+        db.fixtures.create({
+          division: fixture[0],
+          date: fixture[1].split('/').reverse().join('-'),
+          time: fixture[2],
+          homeTeam: fixture[3],
+          awayTeam: fixture[4],
+          williamHillHome: fixture[23],
+          williamHillDraw: fixture[24],
+          williamHillAway: fixture[25]
+        })
+      } else {
+        db.fixtures.update({
+          division: fixture[0],
+          date: fixture[1].split('/').reverse().join('-'),
+          time: fixture[2],
+          homeTeam: fixture[3],
+          awayTeam: fixture[4],
+          williamHillHome: fixture[23],
+          williamHillDraw: fixture[24],
+          williamHillAway: fixture[25]
+        })
+      }
     })
   })
 }
