@@ -26,7 +26,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    expires: 300000
+    expires: 300000000000
   }
 }))
 
@@ -50,6 +50,10 @@ app.use(function (req, res, next) {
 app.get('/', require('./server/routes/index'))
 
 app.get('/main', require('./server/routes/main').get)
+
+app.get('/refresh-fixtures', require('./server/routes/refresh-fixtures').get)
+
+app.get('/get-fixtures-by-date', require('./server/routes/get-fixtures-by-date').get)
 
 app.get('/login', require('./server/routes/login').get)
 app.post('/login', require('./server/routes/login').post)
