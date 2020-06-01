@@ -13,46 +13,48 @@ async function getLatestFixtures () {
           .on('data', row => {
             fixtures.push(row)
           })
-          .on('end', async () => {
-            await saveFixturesToDatabase()
-          })
       }))
   })
+  await saveFixturesToDatabase()
 }
 
 async function saveFixturesToDatabase () {
   fixtures.shift()
-  fixtures.forEach(async fixture => {
-    await db.fixtures.findOne({ where: {
-      date: fixture[1].split('/').reverse().join('-'),
-      homeTeam: fixture[3],
-      awayTeam: fixture[4]
-    } }).then(item => {
-      if (!item) {
-        console.log(item)
-        db.fixtures.create({
-          division: fixture[0],
-          date: fixture[1].split('/').reverse().join('-'),
-          time: fixture[2],
-          homeTeam: fixture[3],
-          awayTeam: fixture[4],
-          williamHillHome: fixture[23],
-          williamHillDraw: fixture[24],
-          williamHillAway: fixture[25]
-        })
-      } else {
-        db.fixtures.update({
-          division: fixture[0],
-          date: fixture[1].split('/').reverse().join('-'),
-          time: fixture[2],
-          homeTeam: fixture[3],
-          awayTeam: fixture[4],
-          williamHillHome: fixture[23],
-          williamHillDraw: fixture[24],
-          williamHillAway: fixture[25]
-        })
+  return Promise.all(fixtures.map(fixture => saveFixtureToDatabase(fixture)))
+}
+
+async function saveFixtureToDatabase (fixture) {
+  return db.fixtures.findOne({ where: {
+    date: fixture[1],
+    homeTeam: fixture[3],
+    awayTeam: fixture[4]
+  } }).then(item => {
+    if (!item) {
+      db.fixtures.create({
+        division: fixture[0],
+        date: fixture[1],
+        time: fixture[2],
+        homeTeam: fixture[3],
+        awayTeam: fixture[4],
+        williamHillHome: fixture[23],
+        williamHillDraw: fixture[24],
+        williamHillAway: fixture[25]
+      })
+    } else {
+      db.fixtures.update({
+        division: fixture[0],
+        date: fixture[1],
+        time: fixture[2],
+        homeTeam: fixture[3],
+        awayTeam: fixture[4],
+        williamHillHome: fixture[23],
+        williamHillDraw: fixture[24],
+        williamHillAway: fixture[25] },
+      { where: {
+        id: item.id }
       }
-    })
+      )
+    }
   })
 }
 

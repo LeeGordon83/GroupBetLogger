@@ -1,9 +1,9 @@
 const db = require('../../models')
 
-async function findAllFixturesByDate (date) {
+async function findAllFixturesByDate (dateString) {
   const allFixtures = await db.fixtures.findAll({
     where: {
-      date: date }
+      date: dateString }
   })
 
   return allFixtures

@@ -7,24 +7,30 @@
   <% } %>
 </div>
 <br/>
-
 <div class="row">
+  
+  <div class="container">
 
-  <div class="col-md-12" style="text-align: center;">
   <div class="panel panel-info" style="background-color: white">
     <div class="panel-body" id="fixtures">
     <% for (const id in fixturesFound) { %>
-      <div><%= fixturesFound[id].homeTeam %> <%= fixturesFound[id].time %> <%= fixturesFound[id].awayTeam %></div>
-      <hr>
+      <div class="row">
+      <div class="col-md-5" style="text-align: right;"><%= fixturesFound[id].homeTeam %> </div>
+       
+      <div class="col-md-2" style="text-align: center;"><%= fixturesFound[id].time %></div> 
+      <div class="col-md-5" style="text-align: left;"><%= fixturesFound[id].awayTeam %></div>
+    </div>
+    <hr>
       <% } %>
     </div>
   </div>
 </div>
+</div>
+<div class="col-md-12" style="text-align: center;">
 
-  <div id='auth-container'>
     <h2><a id='main'style='color:white' href=/refresh-fixtures>Refresh Fixtures</a></h1>
-  </div>
-
+  
+</div>
   <script type="text/javascript">
   
   var lastClicked;
@@ -51,12 +57,18 @@
     $('#fixtures').html(function(){
       let html = ''
       for (const id in response) 
-      html += `<div>${ response[id].homeTeam } ${ response[id].time } ${ response[id].awayTeam }</div><hr>`
+      html += `<div class="row">
+        <div class="col-md-5" style="text-align: right;"> ${ response[id].homeTeam } </div>
+        <div class="col-md-2" style="text-align: center;"> ${ response[id].time } </div>
+        <div class="col-md-5" style="text-align: left;"> ${ response[id].awayTeam }</div>
+        </div>
+        <hr>`
       return html
     })
       }
     })
   }
   </script>
+
 
 
