@@ -1,45 +1,63 @@
 const fs = require('fs')
-const fastCsv = require('fast-csv')
+const csv = require('fast-csv')
+const db = require('../../models')
+const http = require('http')
 
-async function latestFixtures () {
-  let stream = fs.createReadStream("http://www.football-data.co.uk/fixtures.csv");
-  let csvData = [];
-  let csvStream = fastcsv
-    .parse()
-    .on("data", function (data) {
-      csvData.push(data);
-    })
-    .on("end", function () {
-      csvData.shift();
+const fixtures = []
 
-      const query = INSERT INTO fixtures (division, date, time, homeTeam, awayTeam, williamHillHome, williamHillDraw, williamHillAway)
-                    VALUES ($1, $2, $3, $4, $5, $24, $25, $26);
+async function getLatestFixtures () {
+  http.get('http://www.football-data.co.uk/fixtures.csv', response => {
+    response.pipe(fs.createWriteStream('fixtures.csv')
+      .on('finish', () => {
+        csv.parseFile('fixtures.csv')
+          .on('data', row => {
+            fixtures.push(row)
+          })
+      }))
+  })
+  await saveFixturesToDatabase()
+}
 
-      pool connect((err, client, done) => {
-        if(err) throw err;
-        
-        try {
-          csvData.forEach(row => {
-            client.query(query, row, (err, res) => {
-              if (err) {
-                console.log(err.stack);
-              } else {
-                console.log("inserted " = res.rowCount = " row", row);
-              }
-            });
-          });
-        } finally {
-          done();
-        }
-      });
-    });
+async function saveFixturesToDatabase () {
+  fixtures.shift()
+  return Promise.all(fixtures.map(fixture => saveFixtureToDatabase(fixture)))
+}
 
-  stream.pipe(csvStream);
-
-  console.log(fixtures);
-  return fixtures
+async function saveFixtureToDatabase (fixture) {
+  return db.fixtures.findOne({ where: {
+    date: fixture[1],
+    homeTeam: fixture[3],
+    awayTeam: fixture[4]
+  } }).then(item => {
+    if (!item) {
+      db.fixtures.create({
+        division: fixture[0],
+        date: fixture[1],
+        time: fixture[2],
+        homeTeam: fixture[3],
+        awayTeam: fixture[4],
+        williamHillHome: fixture[23],
+        williamHillDraw: fixture[24],
+        williamHillAway: fixture[25]
+      })
+    } else {
+      db.fixtures.update({
+        division: fixture[0],
+        date: fixture[1],
+        time: fixture[2],
+        homeTeam: fixture[3],
+        awayTeam: fixture[4],
+        williamHillHome: fixture[23],
+        williamHillDraw: fixture[24],
+        williamHillAway: fixture[25] },
+      { where: {
+        id: item.id }
+      }
+      )
+    }
+  })
 }
 
 module.exports = {
-  latestFixtures
+  getLatestFixtures
 }

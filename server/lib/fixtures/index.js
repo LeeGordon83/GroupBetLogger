@@ -1,5 +1,5 @@
-const { latestFixtures } = require('./fixtures')
+const { getLatestFixtures } = require('./fixtures')
 
 module.exports = {
-  latestFixtures
+  getLatestFixtures
 }

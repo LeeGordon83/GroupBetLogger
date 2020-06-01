@@ -7,7 +7,8 @@ const dbConfig = {
   database: process.env.POSTGRES_DB || 'groupbetlogger',
   host: process.env.POSTGRES_HOST || 'localhost',
   port: process.env.POSTGRES_PORT || 5432,
-  dialect: 'postgres'
+  dialect: 'postgres',
+  logging: false
 }
 
 // inform sequelize to use same config regardless of environment to reduce duplication

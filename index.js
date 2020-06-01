@@ -2,6 +2,7 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
+const crypto = require('crypto')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const port = process.env.PORT
@@ -21,7 +22,7 @@ app.use(cookieParser())
 // initialize express-session to allow us track the logged-in user across sessions.
 app.use(session({
   key: 'user_sid',
-  secret: 'somerandomstuffs',
+  secret: crypto.randomBytes(64).toString('hex'),
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -48,7 +49,11 @@ app.use(function (req, res, next) {
  */
 app.get('/', require('./server/routes/index'))
 
-app.get('/main', require('./server/routes/main'))
+app.get('/main', require('./server/routes/main').get)
+
+app.get('/refresh-fixtures', require('./server/routes/refresh-fixtures').get)
+
+app.get('/get-fixtures-by-date', require('./server/routes/get-fixtures-by-date').get)
 
 app.get('/login', require('./server/routes/login').get)
 app.post('/login', require('./server/routes/login').post)
@@ -61,13 +66,12 @@ app.post('/forgot-password', require('./server/routes/forgot-password').post)
 
 app.get('/groups', require('./server/routes/groups').get)
 
+app.get('/addgroup', require('./server/routes/addgroup').get)
+app.post('/addgroup', require('./server/routes/addgroup').post)
+
 app.get('/logout', require('./server/routes/logout'))
 
-app.get('/main', require('./server/routes/main'))
-
-/**
- * Server Activation
- */
+app.get('/main', require('./server/routes/main').get)
 
 app.listen(port)
 
