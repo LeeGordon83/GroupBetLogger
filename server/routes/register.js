@@ -17,10 +17,7 @@ module.exports = {
     } else {
       const newUser = await Register.register(req)
       req.session.user = newUser
-      res.render('main.ejs', {
-        user: newUser.firstname + ' ' + newUser.surname
-      }
-      )
+      res.redirect('/main')
     }
   }
 }
