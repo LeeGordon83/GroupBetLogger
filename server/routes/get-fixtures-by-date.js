@@ -8,11 +8,7 @@ module.exports = {
 
     const dateString = await tools.convertDatetoString(date)
 
-    console.log(dateString)
-
     const results = await find.findAllFixturesByDate(dateString)
-
-    console.log(results)
 
     res.send(results)
   }
