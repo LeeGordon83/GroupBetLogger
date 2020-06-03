@@ -67,6 +67,8 @@ app.post('/add-group', require('./server/routes/add-group').post)
 
 app.get('/:id/group-overview', require('./server/routes/group-overview').get)
 
+app.get('/remove-group/:id', require('./server/routes/remove-group').get)
+
 app.get('/logout', require('./server/routes/logout'))
 
 app.get('/main', require('./server/routes/main').get)
