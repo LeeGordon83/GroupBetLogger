@@ -1,10 +1,19 @@
 <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 style='color:white; text-align: center;'>Add Group</h1>
+      <br>
+      <div class="alert"  style='display: none;' id='formError'>
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        You must add a group name and at least one group member to save group
+      </div>
+    </div>
+  </div>
 <div class="row">
   <div class="col-md-4">
   </div>
   <div class="col-md-4">
-    <h1 style='color:white; text-align: center;'>Add Group</h1>
-    <form class='form-horizontal beanForm' autocomplete='off'  name='form' id="my_form" enctype="multipart/form-data" action="/add-group" method="post">
+    <form class='form-horizontal beanForm' autocomplete='off'  name='form' id="my_form" enctype="multipart/form-data" action="/addgroup" method="post">
       <input class='authenticate' type='groupname' name='groupname' id='groupname' placeholder='Group Name' required>
       <select class='authenticate select1' name="select1" id="select1" onchange="addFunction(event)">
         <option value="" disabled selected>Select User</option>
@@ -32,6 +41,7 @@
   var picked = [];
   var lastGenerated;
   var pickedNum = picked.length + 1;
+  
 
   function addFunction(e) {
     var original = $('select.select' + pickedNum + ':eq(0)');
@@ -39,6 +49,8 @@
     var pickedId = $('#select' + pickedNum + ' :selected').val();
     var selectlength = $('#select1 option').length - 1;
 
+    
+ 
 
     picked.push(pickedId);
 
@@ -55,7 +67,7 @@
       clone.prop('name', 'select' + pickedNum);
 
       clone.find('option[value=' + pickedId + ']').attr('disabled', 'disabled')
-      //$('#removeLast').show();
+      $('#removeLast').show();
 
       $('form').append(clone).append('<br />');
     }
@@ -63,24 +75,32 @@
 
   function removeFunction(e) {
 
-    var lastNum = picked.length;
+    var lastNum = picked.length -1;
 
-    picked.pop();
-
+    var lastPickId = picked.pop();
+    
+    $('form').find('br').remove();
     $(".select" + pickedNum).remove();
-
+    
     $('#select' + lastNum).prop("disabled", false);
 
-    pickedNum = picked.length;
+    $('#select' + lastNum).find('option[value=' + lastPickId + ']').attr('disabled', false)
+    
+    pickedNum = pickedNum - 1;
 
     if (pickedNum === 1) {
       $('#removeLast').hide();
     }
+
   };
 
   function submitGroup(e) {
      e.preventDefault()
-  
+    
+     groupname = $("#groupname").val()
+
+     if (picked.length > 0 && groupname !== "")
+     {
      $.post('/add-group', {
       formdata: $('#my_form').serializeArray() ,
       pickedArray: picked
@@ -88,6 +108,8 @@
 
     window.location.replace('/groups');
 });
-
+     }
+     else
+     $('#formError').show();
    }
 </script>

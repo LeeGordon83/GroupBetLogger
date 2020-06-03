@@ -2,8 +2,7 @@ const find = require('../lib/find')
 
 module.exports = {
   get: (req, res) => {
-    res.render('forgot-password.ejs', {
-      flash: res.locals.flash })
+    res.render('forgot-password.ejs')
   },
 
   post: async (req, res) => {

@@ -8,10 +8,9 @@ module.exports = {
     if (req.session.user !== undefined) {
       const users = await find.findAll()
       res.render('add-group.ejs', { usersFound: users })
-    }
-    else{
+    } else {
       res.redirect('/login')
-    } 
+    }
   },
 
   post: async (req, res) => {

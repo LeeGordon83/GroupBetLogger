@@ -674,3 +674,69 @@ body {
   .panel-danger > .panel-footer + .panel-collapse > .panel-body {
       border-bottom-color: #ebccd1;
   }
+
+  .nav-pills > li {
+    float: left;
+}
+
+    .nav-pills > li > a {
+        border-radius: 4px;
+    }
+
+    .nav-pills > li + li {
+        margin-left: 2px;
+    }
+
+    .nav-pills > li.active > a,
+    .nav-pills > li.active > a:hover,
+    .nav-pills > li.active > a:focus {
+        color: #ffffff;
+        background-color: #000000;
+    }
+
+
+.list-group-item.active > .badge,
+.nav-pills > .active > a > .badge {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.list-group-item > .badge {
+    float: right;
+}
+
+    .list-group-item > .badge + .badge {
+        margin-right: 5px;
+    }
+
+.nav-pills > li > a > .badge {
+    margin-left: 3px;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.alert.success {background-color: #4CAF50;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
