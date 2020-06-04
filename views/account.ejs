@@ -1,0 +1,83 @@
+<div class="container">
+
+
+<div class="jumbotron">
+  <h1>Your Account</h1>      
+</div>
+</div>
+
+<div class="container-sm">
+    <div class="col-md-4">
+<br>
+<br>
+    <img src="/images/blankguy.png" class="rounded-corners" alt="Your Dish" style="max-width: 300px; max-height:500px;">
+    </div>
+  </div>
+  <div class="col-md-2" style="text-align: center;  padding-right: 0;">
+    <br>
+    <br>
+    <label class="acclabel">First Name</label>
+  </div>
+  <div class="col-md-6" style="text-align: center; padding-left: 0;">
+    <br>
+    <br>
+    <button class="accordion" id="firstname">First Name</button>
+  </div> 
+    <hr>
+
+    <div class="col-md-2 offset-md-4" style="text-align: center;  padding-right: 0;">
+      <br>
+      <br>
+      <label class="acclabel">Surname</label>
+    </div>
+    <div class="col-md-6" style="text-align: center; padding-left: 0;">
+      <br>
+      <br>
+      <button class="accordion" id="surname">Surname</button>
+    </div> 
+      <hr>
+
+      <div class="col-md-2 offset-md-4" style="text-align: center;  padding-right: 0;">
+        <br>
+        <br>
+        <label class="acclabel">Email</label>
+      </div>
+      <div class="col-md-6" style="text-align: center; padding-left: 0;">
+        <br>
+        <br>
+        <button class="accordion" id="password">Email</button>
+      </div> 
+        <hr>
+
+        <div class="col-md-2 offset-md-4" style="text-align: center;  padding-right: 0;">
+          <br>
+          <br>
+          <label class="acclabel">Password</label>
+        </div>
+        <div class="col-md-6" style="text-align: center; padding-left: 0;">
+          <br>
+          <br>
+          <button class="accordion" id="firstname">**********</button>
+        </div> 
+          <hr>
+
+  </div>
+    </div>
+</div>
+
+
+
+<script>
+  var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+
+  });
+}
+</script>
