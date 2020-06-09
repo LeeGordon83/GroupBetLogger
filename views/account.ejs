@@ -1,83 +1,74 @@
 <div class="container">
-
-
-<div class="jumbotron">
-  <h1>Your Account</h1>      
-</div>
-
-
-  <div class="row">
-    <div class="col-md-4">
-<br>
-<br>
-    <img src="/images/blankguy.png" class="rounded-corners" alt="Your Dish" style="max-width: 300px; max-height:500px;">
-    </div>
-  
-  <div class="col-md-2" style="text-align: center;  padding-right: 0;">
-    <br>
-    <br>
-    <label class="acclabel">First Name</label>
+  ​
+  <div class="jumbotron">
+    <h1>Your Account</h1>
   </div>
-  <div class="col-md-6" style="text-align: center; padding-left: 0;">
-    <br>
-    <br>
-    <button class="accordion" id="firstname">First Name</button>
-  </div> 
-    <hr>
-
-    <div class="col-md-2 offset-md-4" style="text-align: center;  padding-right: 0;">
-      <br>
-      <br>
-      <label class="acclabel">Surname</label>
-    </div>
-    <div class="col-md-6" style="text-align: center; padding-left: 0;">
-      <br>
-      <br>
-      <button class="accordion" id="surname">Surname</button>
-    </div> 
+  ​
+<div class="super-container" style="display: inline-flex;">
+  <div class="w-50 row" >
+      <div class="col-md-4">
+        <img src="/images/blankguy.png" class="rounded-corners" alt="Your Dish"
+          style="max-width: 300px; max-height:500px;">
+      </div>
+  </div>
+​
+  <div class="col-md-8 row">
+    
+      <div class="col-md-4" style="text-align: center; padding-right: 0;">
+        <label class="acclabel">First Name</label>
+      </div>
+      <div class="col-md-8" style="text-align: center; padding-left: 0;">
+        <button class="accountbox" id="firstname" onclick="editAccount(event)" ><%= currentUser.firstname %></button>
+      </div>
       <hr>
-
-      <div class="col-md-2 offset-md-4" style="text-align: center;  padding-right: 0;">
-        <br>
-        <br>
+      <br>
+      ​
+      <div class="col-md-4 pt-2" style="text-align: center;  padding-right: 0;">
+        <label class="acclabel">Surname</label>
+      </div>
+      <div class="col-md-8 pt-2" style="text-align: center; padding-left: 0;">
+        <button class="accountbox" id="surname"><%= currentUser.surname %></button>
+      </div>
+      <hr>
+      <br>
+      ​
+      <div class="col-md-4 pt-2" style="text-align: center;  padding-right: 0; ">
         <label class="acclabel">Email</label>
       </div>
-      <div class="col-md-6" style="text-align: center; padding-left: 0;">
-        <br>
-        <br>
-        <button class="accordion" id="password">Email</button>
-      </div> 
-        <hr>
-
-        <div class="col-md-2 offset-md-4" style="text-align: center;  padding-right: 0;">
-          <br>
-          <br>
-          <label class="acclabel">Password</label>
-        </div>
-        <div class="col-md-6" style="text-align: center; padding-left: 0;">
-          <br>
-          <br>
-          <button class="accordion" id="firstname">**********</button>
-        </div> 
-          <hr>
-
+      <div class="col-md-8 pt-2" style="text-align: center; padding-left: 0;">
+        <button class="accountbox" id="password"><%= currentUser.email %></button>
+      </div>
+      <hr>
+      <br>
+      ​
+      <div class="col-md-4 pt-2" style="text-align: center;  padding-right: 0;">
+        <label class="acclabel">Password</label>
+      </div>
+      <div class="col-md-8 pt-2" style="text-align: center; padding-left: 0;">
+        <button class="accountbox" id="firstname">**********</button>
+      </div>
+      <hr>
   </div>
-    </div>
+​
+​
 </div>
-
-
-
+​
+​
+</div>
+</div>
+​
+​
+​
 <script>
-  var acc = document.getElementsByClassName("accordion");
-var i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
+  function editAccount(e) {
 
-
-  });
-}
+    $.ajax({
+      url: '/account-edit/' + e.target.id,
+      success: function(response) {
+        window.location.replace('/account-edit/id');
+      }
+  
+    })
+  }
 </script>
