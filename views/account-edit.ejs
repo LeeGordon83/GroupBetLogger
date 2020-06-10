@@ -1,21 +1,28 @@
 <div class="container">
-  <div class="row">
 
-    <div class="col-md-6 offset-md-3">
-      <h1 style='color:white; text-align: center;'><%= userEditSelection.user %></h1>
-
-    </div>
-  </div>
-  <br/>
 
     <div class="row">
 
       <div class="col-md-6 offset-md-3">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 style='text-align: center;'>Group Members</h4>
+            <h4 style='text-align: center;'>Change <%= userEditSelection[1].header %></h4>
           </div>
           <div class="panel-body">
+            <form id='authenticate' action='/account-edit' autocomplete='off' method='POST' >
+              <% if (userEditSelection[1].userattribute === 'firstname') { %>
+              <input class='authenticate glowing-border' style='border-color: black;' name='firstName' value="<%= userEditSelection[0].firstname %>" required>
+              <% } %>
+              <% if (userEditSelection[1].userattribute === 'surname') { %>
+                <input class='authenticate glowing-border' style='border-color: black;' name='surname' value="<%= userEditSelection[0].surname %>" required>
+              <% } %>
+              <% if (userEditSelection[1].userattribute === 'email') { %>
+                <input class='authenticate glowing-border' type="email" style='border-color: black;' name='email' value="<%= userEditSelection[0].email %>" required>
+              <% } %>
+              <% if (userEditSelection[1].userattribute === 'password') { %>
+                <input class='authenticate glowing-border' type="password" style='border-color: black;' name='password' value="<%= userEditSelection[0].password %>" required>
+              <% } %>
+            </form>
            </div>
         </div> 
       </div>

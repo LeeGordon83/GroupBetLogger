@@ -24,6 +24,7 @@ async function getAccountEditDetails (user, userattribute) {
 
   userObject.push(user)
   userObject.push(editRequest)
+  console.log(userObject)
   return userObject
 }
 
