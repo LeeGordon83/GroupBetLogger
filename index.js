@@ -56,6 +56,7 @@ app.get('/about', require('./server/routes/about').get)
 app.get('/account', require('./server/routes/account').get)
 
 app.get('/account-edit/:userattribute', require('./server/routes/account-edit').get)
+app.post('/account-edit/', require('./server/routes/account-edit').post)
 
 app.get('/refresh-fixtures', require('./server/routes/refresh-fixtures').get)
 

@@ -1,7 +1,7 @@
-const userObject = []
 
 async function getAccountEditDetails (user, userattribute) {
   var headerName = ''
+  const userObject = []
 
   switch (userattribute) {
     case 'firstname':

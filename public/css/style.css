@@ -179,6 +179,7 @@ content {
 
 #authenticate > input {
   display: block;
+  
 }
 
 input.authenticate  {
@@ -789,4 +790,10 @@ img.rounded-corners {
   outline: none;
   border-color: #9ecaed;
   box-shadow: 0 0 10px #9ecaed;
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

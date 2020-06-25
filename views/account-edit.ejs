@@ -1,17 +1,21 @@
 <div class="container">
 
 
-    <div class="row">
 
-      <div class="col-md-6 offset-md-3">
+
+      <div class="col-md-6 offset-md-3 centered"  style="text-align: center;">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 style='text-align: center;'>Change <%= userEditSelection[1].header %></h4>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" style="text-align: center ">
             <form id='authenticate' action='/account-edit' autocomplete='off' method='POST' >
+              <div class="form-group">
+                <input type="hidden" name="id" value="<%= userEditSelection[0].id %>">
+                <input type="hidden" name="field" value="<%= userEditSelection[1].userattribute %>">
+              
               <% if (userEditSelection[1].userattribute === 'firstname') { %>
-              <input class='authenticate glowing-border' style='border-color: black;' name='firstName' value="<%= userEditSelection[0].firstname %>" required>
+              <input class='authenticate glowing-border' style='border-color: black;' name='firstname' value="<%= userEditSelection[0].firstname %>" required>
               <% } %>
               <% if (userEditSelection[1].userattribute === 'surname') { %>
                 <input class='authenticate glowing-border' style='border-color: black;' name='surname' value="<%= userEditSelection[0].surname %>" required>
@@ -20,14 +24,23 @@
                 <input class='authenticate glowing-border' type="email" style='border-color: black;' name='email' value="<%= userEditSelection[0].email %>" required>
               <% } %>
               <% if (userEditSelection[1].userattribute === 'password') { %>
-                <input class='authenticate glowing-border' type="password" style='border-color: black;' name='password' value="<%= userEditSelection[0].password %>" required>
+                <% if (typeof error !== "undefined") { %><div id='flash' style='text-align: center; ; color: red;'><%= error %></div><% } %>
+
+                <input class='authenticate glowing-border' type="password" style='border-color: black;' placeholder="Current Password" name='currentpassword' required>
+                <input class='authenticate glowing-border' type="password" style='border-color: black;' placeholder="New Password" name='newpassword' required>
+                <input class='authenticate glowing-border' type="password" style='border-color: black;' placeholder="Confrim New Password" name='confirmpassword' required>
+
               <% } %>
+            </div>
             </form>
+            <div id='auth-container'>
+              <input class='NavButton centre' form='authenticate' type='submit' value='Save'>
+            </div>
            </div>
         </div> 
       </div>
 
-    </div>
+
 
 
 
