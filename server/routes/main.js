@@ -9,8 +9,9 @@ module.exports = {
 
       const fixturesList = await find.findAllFixturesByDate(dateString)
       res.render('main.ejs', { fixturesFound: fixturesList })
+    } else {
+      res.redirect('/login')
     }
-    res.redirect('/login')
   }
 
 }

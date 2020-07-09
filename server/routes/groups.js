@@ -6,7 +6,6 @@ module.exports = {
     if (req.session.user !== undefined) {
       groups = await findGroups.findGroupsWithUser(req.session.user.id)
     }
-    console.log(groups)
     req.session.user ? res.render('groups.ejs', { groups: groups }) : res.redirect('/login')
   }
 }

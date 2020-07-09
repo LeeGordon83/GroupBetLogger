@@ -10,8 +10,7 @@ module.exports = {
       await remove.removeGroup(req.params.id)
 
       res.redirect('/groups')
-    }
-    else{
+    } else {
       res.redirect('/login')
     }
   }
