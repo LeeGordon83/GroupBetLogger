@@ -1,4 +1,4 @@
-async function convertDatetoString (date) {
+async function convertDatetoString (date, region) {
   var d = new Date(date)
 
   var month = '' + (d.getMonth() + 1)
@@ -7,8 +7,11 @@ async function convertDatetoString (date) {
 
   if (month.length < 2) { month = '0' + month }
   if (day.length < 2) { day = '0' + day }
-
-  return [day, month, year].join('/')
+  if (region === 'UK') {
+    return [day, month, year].join('/')
+  } else {
+    return [year, month, day].join('-')
+  }
 }
 module.exports = {
   convertDatetoString

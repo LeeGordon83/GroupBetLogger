@@ -6,39 +6,51 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: 1,
       type: DataTypes.INTEGER
     },
+    fixture_id: {
+      type: DataTypes.INTEGER
+    },
     division: {
       type: DataTypes.STRING,
       allowNull: 0
     },
     date: {
       allowNull: 0,
-      type: DataTypes.STRING
-    },
-    time: {
-      allowNull: 0,
-      type: DataTypes.STRING
+      type: DataTypes.DATE
     },
     homeTeam: {
       type: DataTypes.STRING,
       allowNull: 0
     },
+    homeTeamLogo: {
+      type: DataTypes.STRING
+    },
     awayTeam: {
       type: DataTypes.STRING,
       allowNull: 0
     },
+    awayTeamLogo: {
+      type: DataTypes.STRING
+    },
     williamHillHome: {
-      type: DataTypes.DECIMAL,
-      allowNull: 0
+      type: DataTypes.DECIMAL
     },
     williamHillDraw: {
-      type: DataTypes.DECIMAL,
-      allowNull: 0
+      type: DataTypes.DECIMAL
     },
     williamHillAway: {
-      type: DataTypes.DECIMAL,
-      allowNull: 0
+      type: DataTypes.DECIMAL
+    },
+    finalScore: {
+      type: DataTypes.STRING
     }
-  })
+
+  }
+
+  )
+
+  fixture.prototype.getKickOffTime = function () {
+    return this.date.toLocaleTimeString('en-UK', { hour: '2-digit', minute: '2-digit' })
+  }
 
   return fixture
 }

@@ -7,37 +7,39 @@ module.exports = {
         primaryKey: 1,
         type: Sequelize.INTEGER
       },
+      fixture_id: {
+        type: Sequelize.INTEGER
+      },
       division: {
         type: Sequelize.STRING,
         allowNull: 0
       },
       date: {
         allowNull: 0,
-        type: Sequelize.STRING
-      },
-      time: {
-        allowNull: 0,
-        type: Sequelize.STRING
+        type: Sequelize.DATE
       },
       homeTeam: {
         type: Sequelize.STRING,
         allowNull: 0
       },
+      homeTeamLogo: {
+        type: Sequelize.STRING
+      },
       awayTeam: {
         type: Sequelize.STRING,
         allowNull: 0
       },
+      awayTeamLogo: {
+        type: Sequelize.STRING
+      },
       williamHillHome: {
-        type: Sequelize.DECIMAL,
-        allowNull: 0
+        type: Sequelize.DECIMAL
       },
       williamHillDraw: {
-        type: Sequelize.DECIMAL,
-        allowNull: 0
+        type: Sequelize.DECIMAL
       },
       williamHillAway: {
-        type: Sequelize.DECIMAL,
-        allowNull: 0
+        type: Sequelize.DECIMAL
       },
       createdAt: {
         allowNull: 0,
@@ -46,6 +48,9 @@ module.exports = {
       updatedAt: {
         allowNull: 0,
         type: Sequelize.DATE
+      },
+      finalScore: {
+        type: Sequelize.STRING
       }
     })
   },

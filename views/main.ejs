@@ -15,10 +15,11 @@
     <div class="panel-body" id="fixtures">
     <% for (const id in fixturesFound) { %>
       <div class="row">
-      <div class="col-md-5" style="text-align: right;"><%= fixturesFound[id].homeTeam %> </div>
-       
-      <div class="col-md-2" style="text-align: center;"><%= fixturesFound[id].time %></div> 
-      <div class="col-md-5" style="text-align: left;"><%= fixturesFound[id].awayTeam %></div>
+        <div class="col-md-1" style="text-align: left;"><img width="50%" height="100%" src='<%= fixturesFound[id].homeTeamLogo %>'> </div>
+      <div class="col-md-4" style="text-align: left;"> <%= fixturesFound[id].homeTeam %> </div>
+      <div class="col-md-2" style="text-align: center;"><%= fixturesFound[id].getKickOffTime() %></div> 
+      <div class="col-md-4" style="text-align: right;"><%= fixturesFound[id].awayTeam %> </div>
+      <div class="col-md-1" style="text-align: right;"><img width="50%" height="100%" src='<%= fixturesFound[id].awayTeamLogo %>'> </div>
     </div>
     <hr>
       <% } %>
@@ -59,7 +60,7 @@
       for (const id in response) 
       html += `<div class="row">
         <div class="col-md-5" style="text-align: right;"> ${ response[id].homeTeam } </div>
-        <div class="col-md-2" style="text-align: center;"> ${ response[id].time } </div>
+        <div class="col-md-2" style="text-align: center;"> ${ response[id].date } </div>
         <div class="col-md-5" style="text-align: left;"> ${ response[id].awayTeam }</div>
         </div>
         <hr>`
