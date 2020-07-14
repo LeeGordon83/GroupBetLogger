@@ -59,9 +59,11 @@
       let html = ''
       for (const id in response) 
       html += `<div class="row">
-        <div class="col-md-5" style="text-align: right;"> ${ response[id].homeTeam } </div>
-        <div class="col-md-2" style="text-align: center;"> ${ response[id].date } </div>
-        <div class="col-md-5" style="text-align: left;"> ${ response[id].awayTeam }</div>
+        <div class="col-md-1" style="text-align: left;"><img width="50%" height="100%" src=' ${ response[id].homeTeamLogo }'> </div>
+        <div class="col-md-4" style="text-align: left;"> ${ response[id].homeTeam } </div>
+        <div class="col-md-2" style="text-align: center;"> ${ response[id].date.substr(11, 5) }</div>
+        <div class="col-md-4" style="text-align: right;"> ${ response[id].awayTeam }</div>
+        <div class="col-md-1" style="text-align: right;"><img width="50%" height="100%" src=' ${ response[id].awayTeamLogo }'> </div>
         </div>
         <hr>`
       return html

@@ -49,7 +49,11 @@ module.exports = (sequelize, DataTypes) => {
   )
 
   fixture.prototype.getKickOffTime = function () {
-    return this.date.toLocaleTimeString('en-UK', { hour: '2-digit', minute: '2-digit' })
+    var hour = this.date.getHours()
+    var minutes = this.date.getMinutes()
+    minutes = minutes > 9 ? minutes : '0' + minutes
+    var time = hour + ':' + minutes
+    return time
   }
 
   return fixture
