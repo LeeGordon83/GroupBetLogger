@@ -8,7 +8,9 @@ const dbConfig = {
   host: process.env.POSTGRES_HOST || 'localhost',
   port: process.env.POSTGRES_PORT || 5432,
   dialect: 'postgres',
-  logging: false
+  logging: false,
+  APIhost: 'v2.api-football.com',
+  APIkey: '10575bc7ba0326d62cdff0b17e3481da'
 }
 
 // inform sequelize to use same config regardless of environment to reduce duplication
