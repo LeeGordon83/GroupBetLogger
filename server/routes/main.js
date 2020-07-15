@@ -1,5 +1,4 @@
 const find = require('../lib/find')
-const tools = require('../lib/tools')
 
 module.exports = {
   get: async (req, res) => {
