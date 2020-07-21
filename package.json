@@ -6,15 +6,23 @@
   "scripts": {
     "start": "nodemon",
     "dev": "nodemon ./index.js",
-    "migrate": "npx sequelize-cli db:migrate"
+    "migrate": "npx sequelize-cli db:migrate",
+    "test": "npm run test:unit",
+    "test:lint": "standard",
+    "test:unit": "jest"
   },
   "keywords": [],
-  "author": "Lee Gordon, Scott Dormand",
+  "author": "Lee Gordon, Scott Dormand, John Watson",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.7",
+    "jest": "^26.1.0",
     "node-env-run": "^3.0.2",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "superagent": "^5.3.1",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -37,5 +45,18 @@
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.21.5",
     "session-file-store": "^1.2.0"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "beforeEach",
+      "expect",
+      "test",
+      "afterEach",
+      "jest",
+      "beforeAll",
+      "afterAll",
+      "it"
+    ]
   }
 }
