@@ -21,7 +21,7 @@
           <div class="panel-body"><% for (const user in groupFound.users) { %>
             <div>
               <%= groupFound.users[user].firstname %> <%= groupFound.users[user].surname %>
-              <h10><a id='remove-user-group' style='color:grey; text-align: center; float:right' href='/remove-user-from-group/<%= groupFound.id %>'>remove</a></h10>
+              <h10><a id='remove-user-group' style='color:grey; text-align: center; float:right' href='/remove-user-from-group/<%= groupFound.id %>/<% groupFound.users[user].id %>'>remove</a></h10>
             </div>
             <% if (typeof error !== "undefined") { %><div id='flash' style="color: red;"><%= error %></div><% } %>
           <% } %></div>

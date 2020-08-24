@@ -75,7 +75,7 @@ app.get('/:id/group-overview', require('./server/routes/group-overview').get)
 
 app.get('/remove-group/:id', require('./server/routes/remove-group').get)
 
-app.get('/remove-user-from-group/:id', require('./server/routes/remove-user-from-group').get)
+app.get('/remove-user-from-group/:id/:id', require('./server/routes/remove-user-from-group').get)
 
 app.get('/logout', require('./server/routes/logout'))
 
