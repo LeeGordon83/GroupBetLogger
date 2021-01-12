@@ -14,14 +14,14 @@ function getHeaders () {
     'content-type': 'application/octet-stream',
     'x-rapidapi-host': config.dbConfig.development.APIhost,
     'x-rapidapi-key': config.dbConfig.development.APIkey,
-    'useQueryString': true
+    useQueryString: true
   }
 }
 
 function callFixtureApi (headers, fixtureDate) {
   return axios({
-    'method': 'GET',
-    'url': `https://${config.dbConfig.development.APIhost}/fixtures/date/${fixtureDate}?timezone=Europe/London`,
+    method: 'GET',
+    url: `https://${config.dbConfig.development.APIhost}/fixtures/date/${fixtureDate}?timezone=Europe/London`,
     headers
   })
 }

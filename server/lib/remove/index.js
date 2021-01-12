@@ -5,5 +5,5 @@ const { removeUserFromGroup } = require('./remove-user-from-group')
 module.exports = {
   removeUsersFromGroup,
   removeGroup,
-  removeUserFromGroup,
+  removeUserFromGroup
 }

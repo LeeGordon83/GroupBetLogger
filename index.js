@@ -86,6 +86,6 @@ app.get('/logout', require('./server/routes/logout'))
 
 app.get('/main', require('./server/routes/main').get)
 
-app.listen(port)
+app.listen(port, () => console.log(`App is listening on port ${port}`))
 
 module.exports = app

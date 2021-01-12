@@ -4,7 +4,7 @@ async function findAll () {
   const allUsers = await db.users.findAll({
 
   })
-
+  console.log(allUsers)
   return allUsers
 }
 
