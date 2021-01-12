@@ -1,7 +1,7 @@
 const db = require('../../models')
 
 async function removeUsersFromGroup (groupId, users) {
-  const group = await removeGroupUsers(groupId, users)
+  await removeGroupUsers(groupId, users)
 }
 
 async function removeGroupUsers (groupId, users) {
@@ -10,8 +10,10 @@ async function removeGroupUsers (groupId, users) {
 
 async function removeGroupUser (groupId, user) {
   return db.UserGroups.destroy({
-    where: {groupId: groupId,
-    userId: user.id }
+    where: {
+      groupId: groupId,
+      userId: user.id
+    }
   })
 }
 

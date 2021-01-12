@@ -4,7 +4,7 @@ const finduser = require('../find/user')
 
 async function savePasswordDetails (userattribute) {
   const user = await finduser.findUser(userattribute.id)
-  var result = ''
+  let result = ''
 
   if (userattribute.newpassword === userattribute.confirmpassword) {
     const newpassword = await encrypt.encryptString(userattribute.newpassword)
@@ -14,7 +14,8 @@ async function savePasswordDetails (userattribute) {
       }, {
         where: {
           id: user.id
-        } })
+        }
+      })
     } else {
       result = 'Current Password Incorrect'
     }

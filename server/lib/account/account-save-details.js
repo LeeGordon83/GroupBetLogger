@@ -22,7 +22,8 @@ async function saveAccountDetails (userattribute) {
   }, {
     where: {
       id: user.id
-    } })
+    }
+  })
 
   return user
 }

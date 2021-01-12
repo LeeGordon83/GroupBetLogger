@@ -49,10 +49,10 @@ module.exports = (sequelize, DataTypes) => {
   )
 
   fixture.prototype.getKickOffTime = function () {
-    var hour = this.date.getHours()
-    var minutes = this.date.getMinutes()
+    const hour = this.date.getHours()
+    let minutes = this.date.getMinutes()
     minutes = minutes > 9 ? minutes : '0' + minutes
-    var time = hour + ':' + minutes
+    const time = hour + ':' + minutes
     return time
   }
 

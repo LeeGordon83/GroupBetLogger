@@ -1,6 +1,6 @@
 
 async function getAccountEditDetails (user, userattribute) {
-  var headerName = ''
+  let headerName = ''
   const userObject = []
 
   switch (userattribute) {
