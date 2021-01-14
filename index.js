@@ -76,6 +76,8 @@ app.get('/groups', require('./server/routes/groups').get)
 app.get('/add-group', require('./server/routes/add-group').get)
 app.post('/add-group', require('./server/routes/add-group').post)
 
+app.get('/bets', require('./server/routes/bets').get)
+
 app.get('/:id/group-overview', require('./server/routes/group-overview').get)
 
 app.get('/remove-group/:id', require('./server/routes/remove-group').get)
