@@ -1,33 +1,35 @@
+'use strict'
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable('fixtures', {
       id: {
-        allowNull: 0,
-        autoIncrement: 1,
-        primaryKey: 1,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
         type: Sequelize.INTEGER
       },
       fixture_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       division: {
         type: Sequelize.STRING,
-        allowNull: 0
+        allowNull: false
       },
       date: {
-        allowNull: 0,
+        allowNull: false,
         type: Sequelize.DATE
       },
       homeTeam: {
         type: Sequelize.STRING,
-        allowNull: 0
+        allowNull: false
       },
       homeTeamLogo: {
         type: Sequelize.STRING
       },
       awayTeam: {
         type: Sequelize.STRING,
-        allowNull: 0
+        allowNull: false
       },
       awayTeamLogo: {
         type: Sequelize.STRING
@@ -42,11 +44,11 @@ module.exports = {
         type: Sequelize.DECIMAL
       },
       createdAt: {
-        allowNull: 0,
+        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: 0,
+        allowNull: false,
         type: Sequelize.DATE
       },
       finalScore: {
@@ -54,7 +56,7 @@ module.exports = {
       }
     })
   },
-  down: (queryInterface, Sequelize) => {
+  down: async (queryInterface, Sequelize) => {
     return queryInterface.dropTable('fixtures')
   }
 }

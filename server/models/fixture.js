@@ -48,6 +48,10 @@ module.exports = (sequelize, DataTypes) => {
 
   )
 
+  fixture.associate = (models) => {
+    fixture.belongsToMany(models.bets, { through: 'betFixtures', foreignKey: 'fixtureId', as: 'bets', otherKey: 'betsId' })
+  }
+
   fixture.prototype.getKickOffTime = function () {
     const hour = this.date.getHours()
     let minutes = this.date.getMinutes()

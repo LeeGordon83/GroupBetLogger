@@ -1,0 +1,20 @@
+[
+	{
+      "id": 1,
+      "email": "lee.gordon83@gmail.com",
+      "password": "$2b$10$IETx99pXEUnzDLlymom/l.V7QzSwgb9vMOU3CkU90JSIW2wKMvC22",
+      "firstname": "Lee",
+      "Surname": "Gordon",
+      "createdAt": "2020-07-08T10:17:36.617Z",
+      "updatedAt": "2020-07-08T10:17:36.617Z"
+  },
+  {
+	  "id": 2,
+      "email": "bill.gordon53@gmail.com",
+      "password": "$2b$10$IETx99pXEUnzDLlymom/l.V7QzSwgb9vMOU3CkU90KSIW2wKMvC22",
+      "firstname": "Bill",
+      "Surname": "Gordon",
+      "createdAt": "2020-07-08T10:17:36.617Z",
+      "updatedAt": "2020-07-08T10:17:36.617Z"
+  }
+]
