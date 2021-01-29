@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
   const fixture = sequelize.define('fixtures', {
-    id: {
+    fixtureId: {
       allowNull: 0,
       autoIncrement: 1,
       primaryKey: 1,
       type: DataTypes.INTEGER
     },
-    fixture_id: {
+    fixtureIdSource: {
       type: DataTypes.INTEGER
     },
     division: {

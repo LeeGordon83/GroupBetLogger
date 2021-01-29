@@ -2,7 +2,7 @@ const find = require('../find')
 const db = require('../../models')
 
 async function saveAccountDetails (userattribute) {
-  const user = await find.findUser(userattribute.id)
+  const user = await find.findUser(userattribute.userId)
 
   switch (userattribute.field) {
     case 'firstname':
@@ -21,7 +21,7 @@ async function saveAccountDetails (userattribute) {
     email: user.email
   }, {
     where: {
-      id: user.id
+      userId: user.userId
     }
   })
 

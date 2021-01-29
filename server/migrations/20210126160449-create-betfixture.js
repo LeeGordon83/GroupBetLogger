@@ -2,7 +2,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('betFixtures', {
-      id: {
+      betFixtureId: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: 'fixtures',
-          key: 'id'
+          key: 'fixtureId'
         }
       },
       betId: {
@@ -21,7 +21,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: 'bets',
-          key: 'id'
+          key: 'betId'
         }
       },
       createdAt: {

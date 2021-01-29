@@ -1,5 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const betSetup = sequelize.define('betSetup', {
+    betSetupId: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     betName: {
       type: DataTypes.STRING,
       allowNull: 0

@@ -1,6 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
   const bets = sequelize.define('bets', {
-    Active: {
+    betId: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    active: {
       type: DataTypes.BOOLEAN,
       allowNull: 0
     },

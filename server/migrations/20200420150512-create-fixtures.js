@@ -2,13 +2,13 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable('fixtures', {
-      id: {
+      fixtureId: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      fixture_id: {
+      fixtureIdSource: {
         type: Sequelize.INTEGER,
         allowNull: false
       },

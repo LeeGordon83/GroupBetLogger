@@ -1,8 +1,8 @@
 'use strict'
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('UserGroups', {
-      id: {
+    return queryInterface.createTable('userGroups', {
+      userGroupId: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: 'users',
-          key: 'id'
+          key: 'userId'
         }
       },
       groupId: {
@@ -21,7 +21,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: 'groups',
-          key: 'id'
+          key: 'groupId'
         }
       },
       createdAt: {

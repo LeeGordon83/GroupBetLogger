@@ -3,7 +3,7 @@ const encrypt = require('../encryption')
 const finduser = require('../find/user')
 
 async function savePasswordDetails (userattribute) {
-  const user = await finduser.findUser(userattribute.id)
+  const user = await finduser.findUser(userattribute.userId)
   let result = ''
 
   if (userattribute.newpassword === userattribute.confirmpassword) {

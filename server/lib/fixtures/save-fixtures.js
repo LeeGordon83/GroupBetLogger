@@ -13,7 +13,7 @@ async function saveFixture (fixture) {
   }).then(item => {
     if (!item) {
       db.fixtures.create({
-        fixture_id: fixture.fixture_id,
+        fixtureIdSource: fixture.fixture_id,
         division: fixture.league.name,
         date: fixture.event_date,
         time: fixture.event_timestamp,
