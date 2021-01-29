@@ -1,4 +1,4 @@
-const db = require('../../models')
+const { db } = require('../../data')()
 
 async function saveFixtures (fixtures) {
   console.log(fixtures)
@@ -6,13 +6,13 @@ async function saveFixtures (fixtures) {
 }
 
 async function saveFixture (fixture) {
-  return db.fixtures.findOne({
+  return db.fixture.findOne({
     where: {
       fixture_id: fixture.fixture_id
     }
   }).then(item => {
     if (!item) {
-      db.fixtures.create({
+      db.fixture.create({
         fixtureIdSource: fixture.fixture_id,
         division: fixture.league.name,
         date: fixture.event_date,
@@ -24,7 +24,7 @@ async function saveFixture (fixture) {
         awayTeamLogo: fixture.awayTeam.logo
       })
     } else {
-      db.fixtures.update({
+      db.fixture.update({
         division: fixture.league.name,
         date: fixture.event_date,
         time: fixture.event_timestamp,

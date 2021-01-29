@@ -1,4 +1,4 @@
-const db = require('../../models')
+const { db } = require('../../data')()
 
 async function findGroupsWithUser (userId) {
   const groups = await findUserGroups(userId)
@@ -7,7 +7,7 @@ async function findGroupsWithUser (userId) {
 }
 
 async function findUserGroups (userId) {
-  return db.UserGroups.findAll({
+  return db.userGroup.findAll({
     where: { userId }
   })
 }
@@ -21,7 +21,7 @@ async function populateGroupWithUsers (group) {
     where: {
       id: group.dataValues.groupId
     },
-    include: [{ model: db.users, as: 'users' }]
+    include: [{ model: db.user, as: 'users' }]
 
   }
   )

@@ -1,9 +1,9 @@
-const db = require('../../models')
+const { db } = require('../../data')()
 
 async function findGroup (id) {
   return db.group.findOne({
     where: { id },
-    include: [{ model: db.users, as: 'users' }]
+    include: [{ model: db.user, as: 'users' }]
 
   }
   )

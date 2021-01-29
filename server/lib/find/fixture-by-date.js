@@ -1,10 +1,9 @@
-const db = require('../../models')
-const { Op } = require('sequelize')
+const { db, sequelize } = require('../../data')()
 
 async function findAllFixturesByDate (fixtureDate, fixtureDate2) {
-  const allFixtures = await db.fixtures.findAll({
+  const allFixtures = await db.fixture.findAll({
     where: {
-      date: { [Op.between]: [fixtureDate, fixtureDate2] }
+      date: { [sequelize.Op.between]: [fixtureDate, fixtureDate2] }
     }
   })
   return allFixtures

@@ -33,6 +33,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: 1
     }
+  }, {
+    tableName: 'betSetups',
+    freezeTableName: true
   })
 
   betSetup.associate = function (models) {

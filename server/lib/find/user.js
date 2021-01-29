@@ -1,7 +1,7 @@
-const db = require('../../models')
+const { db } = require('../../data')()
 
 async function findUser (id) {
-  const user = await db.users.findOne({
+  const user = await db.user.findOne({
     where: { id }
   })
 

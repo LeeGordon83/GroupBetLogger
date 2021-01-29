@@ -1,7 +1,7 @@
-const db = require('../../models')
+const { db } = require('../../data')()
 
 async function removeUserFromGroup (groupId, userId) {
-  return db.UserGroups.destroy({
+  return db.userGroup.destroy({
     where: {
       groupId: groupId,
       userId: userId

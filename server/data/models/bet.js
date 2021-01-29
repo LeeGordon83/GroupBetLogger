@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const bets = sequelize.define('bets', {
+  const bet = sequelize.define('bet', {
     betId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -29,12 +29,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: 0
     }
+  }, {
+    tableName: 'bets',
+    freezeTableName: true
   })
 
-  bets.associate = function (models) {
-    bets.belongsToMany(models.fixtures, { through: 'betFixtures', as: 'fixtures', foreignKey: 'betId', otherKey: 'fixturesId' })
-    bets.belongsTo(models.betSetup, { foreignKey: 'betSetupId', as: 'betSetup' })
+  bet.associate = function (models) {
+    bet.belongsToMany(models.fixture, { through: 'betFixtures', as: 'fixtures', foreignKey: 'betId' })
+    bet.belongsTo(models.betSetup, { foreignKey: 'betSetupId', as: 'betSetup' })
   }
 
-  return bets
+  return bet
 }

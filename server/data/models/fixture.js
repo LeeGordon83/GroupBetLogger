@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const fixture = sequelize.define('fixtures', {
+  const fixture = sequelize.define('fixture', {
     fixtureId: {
       allowNull: 0,
       autoIncrement: 1,
@@ -43,13 +43,13 @@ module.exports = (sequelize, DataTypes) => {
     finalScore: {
       type: DataTypes.STRING
     }
-
-  }
-
-  )
+  }, {
+    tableName: 'fixtures',
+    freezeTableName: true
+  })
 
   fixture.associate = (models) => {
-    fixture.belongsToMany(models.bets, { through: 'betFixtures', foreignKey: 'fixtureId', as: 'bets', otherKey: 'betsId' })
+    // fixture.belongsToMany(models.bets, { through: 'betFixtures', foreignKey: 'fixtureId', as: 'bets', otherKey: 'betsId' })
   }
 
   fixture.prototype.getKickOffTime = function () {

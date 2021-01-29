@@ -1,7 +1,7 @@
-const { db } = require('../../models')()
+const { db } = require('../../data')()
 
 async function findEmail (email) {
-  const emailFound = await db.users.findOne({
+  const emailFound = await db.user.findOne({
     where: {
       email: email
     }

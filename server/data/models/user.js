@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const user = sequelize.define('users', {
+  const user = sequelize.define('user', {
     userId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -23,10 +23,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: 0
     }
+  }, {
+    tableName: 'users',
+    freezeTableName: true
   })
 
   user.associate = function (models) {
-    user.belongsToMany(models.group, { through: 'UserGroups', foreignKey: 'userId', as: 'groups', onDelete: 'CASCADE' })
+    user.belongsToMany(models.group, { through: 'userGroups', foreignKey: 'userId', as: 'groups', onDelete: 'CASCADE' })
   }
 
   return user
