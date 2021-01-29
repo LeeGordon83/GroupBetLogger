@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   betFixtures.associate = function (models) {
-    // betFixtures.belongsTo(models.bet, { foreignKey: 'betId' })
-    // betFixtures.belongsTo(models.fixture, { foreignKey: 'fixtureId', targetKey: 'fixtureId' })
+    betFixtures.belongsTo(models.bet, { foreignKey: 'betId' })
+    betFixtures.belongsTo(models.fixture, { foreignKey: 'fixtureId' })
   }
   return betFixtures
 }

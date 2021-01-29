@@ -7,27 +7,27 @@ module.exports = (sequelize, DataTypes) => {
     },
     active: {
       type: DataTypes.BOOLEAN,
-      allowNull: 0
+      allowNull: false
     },
     betActiveFrom: {
       type: DataTypes.DATE,
-      allowNull: 0
+      allowNull: false
     },
     pickDeadline: {
       type: DataTypes.DATE,
-      allowNull: 0
+      allowNull: false
     },
     betAmount: {
       type: DataTypes.INTEGER,
-      allowNull: 1
+      allowNull: true
     },
     BetResult: {
       type: DataTypes.BOOLEAN,
-      allowNull: 0
+      allowNull: false
     },
     betSetupId: {
       type: DataTypes.INTEGER,
-      allowNull: 0
+      allowNull: false
     }
   }, {
     tableName: 'bets',

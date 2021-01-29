@@ -1,9 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
   const fixture = sequelize.define('fixture', {
     fixtureId: {
-      allowNull: 0,
-      autoIncrement: 1,
-      primaryKey: 1,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
       type: DataTypes.INTEGER
     },
     fixtureIdSource: {
@@ -11,22 +11,22 @@ module.exports = (sequelize, DataTypes) => {
     },
     division: {
       type: DataTypes.STRING,
-      allowNull: 0
+      allowNull: false
     },
     date: {
-      allowNull: 0,
+      allowNull: false,
       type: DataTypes.DATE
     },
     homeTeam: {
       type: DataTypes.STRING,
-      allowNull: 0
+      allowNull: false
     },
     homeTeamLogo: {
       type: DataTypes.STRING
     },
     awayTeam: {
       type: DataTypes.STRING,
-      allowNull: 0
+      allowNull: false
     },
     awayTeamLogo: {
       type: DataTypes.STRING

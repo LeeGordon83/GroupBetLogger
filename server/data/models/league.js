@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     freezeTableName: true
   })
   league.associate = function (models) {
-    league.belongsTo(models.countries, {
+    league.belongsTo(models.country, {
       foreignKey: 'countryId',
       onDelete: 'CASCADE'
     })
