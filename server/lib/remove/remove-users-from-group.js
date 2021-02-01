@@ -1,4 +1,4 @@
-const db = require('../../models')
+const { db } = require('../../data')()
 
 async function removeUsersFromGroup (groupId, users) {
   await removeGroupUsers(groupId, users)
@@ -9,7 +9,7 @@ async function removeGroupUsers (groupId, users) {
 }
 
 async function removeGroupUser (groupId, user) {
-  return db.UserGroups.destroy({
+  return db.userGroup.destroy({
     where: {
       groupId: groupId,
       userId: user.id

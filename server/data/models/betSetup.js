@@ -7,32 +7,35 @@ module.exports = (sequelize, DataTypes) => {
     },
     betName: {
       type: DataTypes.STRING,
-      allowNull: 0
+      allowNull: false
     },
     betType: {
       type: DataTypes.STRING,
-      allowNull: 0
+      allowNull: false
     },
     betStart: {
       type: DataTypes.DATE,
-      allowNull: 0
+      allowNull: false
     },
     betEnd: {
       type: DataTypes.DATE,
-      allowNull: 1
+      allowNull: true
     },
     picksPerMember: {
       type: DataTypes.INTEGER,
-      allowNull: 0
+      allowNull: false
     },
     defaultBetAmount: {
       type: DataTypes.INTEGER,
-      allowNull: 1
+      allowNull: true
     },
     groupId: {
       type: DataTypes.INTEGER,
-      allowNull: 1
+      allowNull: true
     }
+  }, {
+    tableName: 'betSetups',
+    freezeTableName: true
   })
 
   betSetup.associate = function (models) {

@@ -1,4 +1,4 @@
-const db = require('../../models')
+const { db } = require('../../data')()
 const encrypt = require('../encryption')
 const finduser = require('../find/user')
 
@@ -9,7 +9,7 @@ async function savePasswordDetails (userattribute) {
   if (userattribute.newpassword === userattribute.confirmpassword) {
     const newpassword = await encrypt.encryptString(userattribute.newpassword)
     if (await encrypt.isMatch(userattribute.currentpassword, user.password)) {
-      await db.users.update({
+      await db.user.update({
         password: newpassword
       }, {
         where: {

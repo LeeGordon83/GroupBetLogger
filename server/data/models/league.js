@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: DataTypes.STRING,
     active: DataTypes.BOOLEAN
-  }, {})
+  }, {
+    tableName: 'leagues',
+    freezeTableName: true
+  })
   league.associate = function (models) {
     league.belongsTo(models.country, {
       foreignKey: 'countryId',

@@ -9,10 +9,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     }
-  }, {})
+  }, {
+    tableName: 'groups',
+    freezeTableName: true
+  })
   group.associate = function (models) {
-    group.belongsToMany(models.users, { through: 'UserGroups', foreignKey: 'groupId', as: 'users', onDelete: 'CASCADE' })
-    group.hasMany(models.bets, { as: 'bets' })
+    group.belongsToMany(models.user, { through: 'userGroups', foreignKey: 'groupId', as: 'users', onDelete: 'CASCADE' })
+    group.hasMany(models.bet, { as: 'bets' })
   }
 
   return group

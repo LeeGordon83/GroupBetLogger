@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const bets = sequelize.define('bets', {
+  const bet = sequelize.define('bet', {
     betId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -7,34 +7,37 @@ module.exports = (sequelize, DataTypes) => {
     },
     active: {
       type: DataTypes.BOOLEAN,
-      allowNull: 0
+      allowNull: false
     },
     betActiveFrom: {
       type: DataTypes.DATE,
-      allowNull: 0
+      allowNull: false
     },
     pickDeadline: {
       type: DataTypes.DATE,
-      allowNull: 0
+      allowNull: false
     },
     betAmount: {
       type: DataTypes.INTEGER,
-      allowNull: 1
+      allowNull: true
     },
     BetResult: {
       type: DataTypes.BOOLEAN,
-      allowNull: 0
+      allowNull: false
     },
     betSetupId: {
       type: DataTypes.INTEGER,
-      allowNull: 0
+      allowNull: false
     }
+  }, {
+    tableName: 'bets',
+    freezeTableName: true
   })
 
-  bets.associate = function (models) {
-    bets.belongsToMany(models.fixtures, { through: 'betFixtures', as: 'fixtures', foreignKey: 'betId', otherKey: 'fixturesId' })
-    bets.belongsTo(models.betSetup, { foreignKey: 'betSetupId', as: 'betSetup' })
+  bet.associate = function (models) {
+    bet.belongsToMany(models.fixture, { through: 'betFixtures', as: 'fixtures', foreignKey: 'betId' })
+    bet.belongsTo(models.betSetup, { foreignKey: 'betSetupId', as: 'betSetup' })
   }
 
-  return bets
+  return bet
 }

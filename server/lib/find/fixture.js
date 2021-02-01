@@ -1,7 +1,7 @@
-const db = require('../../models')
+const { db } = require('../../data')()
 
 async function findAllFixtures () {
-  const allFixtures = await db.fixtures.findAll({
+  const allFixtures = await db.fixture.findAll({
   })
 
   return allFixtures

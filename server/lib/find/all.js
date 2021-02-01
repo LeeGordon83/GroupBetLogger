@@ -1,7 +1,7 @@
-const db = require('../../models')
+const { db } = require('../../data')()
 
 async function findAll () {
-  const allUsers = await db.users.findAll({
+  const allUsers = await db.user.findAll({
 
   })
   console.log(allUsers)

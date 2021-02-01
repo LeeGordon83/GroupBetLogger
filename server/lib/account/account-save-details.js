@@ -1,5 +1,5 @@
 const find = require('../find')
-const db = require('../../models')
+const { db } = require('../../data')()
 
 async function saveAccountDetails (userattribute) {
   const user = await find.findUser(userattribute.userId)
@@ -15,7 +15,7 @@ async function saveAccountDetails (userattribute) {
       user.email = userattribute.email
   }
 
-  await db.users.update({
+  await db.user.update({
     firstname: user.firstname,
     surname: user.surname,
     email: user.email
