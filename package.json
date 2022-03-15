@@ -15,11 +15,8 @@
   "author": "Lee Gordon, Scott Dormand, John Watson",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^8.2.1",
     "node-env-run": "^3.0.2",
-    "nodemon": "^2.0.7",
-    "supertest": "^4.0.2"
+    "nodemon": "^2.0.7"
   },
   "dependencies": {
     "axios": "^0.19.2",

@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 const crypto = require('crypto')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
+require('dotenv').config()
 const port = process.env.PORT
 
 app.use(expressLayouts)
