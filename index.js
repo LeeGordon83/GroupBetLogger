@@ -5,7 +5,11 @@ const cookieParser = require('cookie-parser')
 const crypto = require('crypto')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
-const port = process.env.PORT
+const port = process.env.PORT || 3000
+const mainrouter = require('./server/routes/main-router')
+const accountrouter = require('./server/routes/account-router')
+const grouprouter = require('./server/routes/group-router.js')
+const fixturesrouter = require('./server/routes/fixtures-router.js')
 
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
@@ -49,42 +53,10 @@ app.use(function (req, res, next) {
  */
 app.get('/', require('./server/routes/index'))
 
-app.get('/main', require('./server/routes/main').get)
-
-app.get('/about', require('./server/routes/about').get)
-
-app.get('/account', require('./server/routes/account').get)
-
-app.get('/account-edit/:userattribute', require('./server/routes/account-edit').get)
-app.post('/account-edit/', require('./server/routes/account-edit').post)
-
-app.get('/refresh-fixtures', require('./server/routes/refresh-fixtures').get)
-
-app.get('/get-fixtures-by-date', require('./server/routes/get-fixtures-by-date').get)
-
-app.get('/login', require('./server/routes/login').get)
-app.post('/login', require('./server/routes/login').post)
-
-app.get('/register', require('./server/routes/register').get)
-app.post('/register', require('./server/routes/register').post)
-
-app.get('/forgot-password', require('./server/routes/forgot-password').get)
-app.post('/forgot-password', require('./server/routes/forgot-password').post)
-
-app.get('/groups', require('./server/routes/groups').get)
-
-app.get('/add-group', require('./server/routes/add-group').get)
-app.post('/add-group', require('./server/routes/add-group').post)
-
-app.get('/:id/group-overview', require('./server/routes/group-overview').get)
-
-app.get('/remove-group/:id', require('./server/routes/remove-group').get)
-
-app.get('/remove-user-from-group/:id', require('./server/routes/remove-user-from-group').get)
-
-app.get('/logout', require('./server/routes/logout'))
-
-app.get('/main', require('./server/routes/main').get)
+app.use(mainrouter)
+app.use(accountrouter)
+app.use(grouprouter)
+app.use(fixturesrouter)
 
 app.listen(port, () => console.log(`App is listening on port ${port}`))
 
