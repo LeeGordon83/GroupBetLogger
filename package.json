@@ -2,31 +2,59 @@
   "name": "groupbetlogger",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon ./app.js"
+    "start": "nodemon",
+    "dev": "nodemon ./index.js",
+    "migrate": "npx sequelize-cli db:migrate",
+    "test:lint": "standard",
+    "test:unit": "mocha test",
+    "test": "npm run test:lint && npm run test:unit"
   },
   "keywords": [],
-  "author": "",
+  "author": "Lee Gordon, Scott Dormand, John Watson",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.26.7",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
     "node-env-run": "^3.0.2",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.15",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
-    "bcrypt": "^4.0.1",
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
+    "cookie-parser": "^1.4.5",
+    "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.0",
+    "fast-csv": "^4.1.3",
+    "googleapis": "^97.0.0",
+    "lint": "^0.7.0",
+    "moment": "^2.27.0",
     "morgan": "^1.9.1",
-    "nunjucks": "^3.2.0",
     "pg": "^7.18.2",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^5.21.5"
+    "sequelize": "^5.21.5",
+    "session-file-store": "^1.2.0",
+    "standard": "^16.0.3"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "beforeEach",
+      "expect",
+      "test",
+      "afterEach",
+      "jest",
+      "beforeAll",
+      "afterAll",
+      "it"
+    ]
   }
 }

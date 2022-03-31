@@ -1,11 +1,23 @@
-<content>    
+ 
+      <div class="jumbotron">
+        <h1>Group Bet Logger</h1>
+        <p class="lead">Bet Together, Win Together!</p>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
     <form id='authenticate' action='/register' autocomplete='off' method='POST'>
-      <input class='authenticate' type='email' name='email' placeholder='Email' required>
-      <input class='authenticate' type='password' name='password' placeholder='Password' required>
+      <input class='authenticate glowing-border' type='firstname' name='firstname' placeholder='First Name' required>
+      <input class='authenticate glowing-border' type='surname' name='surname' placeholder='Surname' required>
+      <input class='authenticate glowing-border' type='email' name='email' placeholder='Email' required>
+      <input class='authenticate glowing-border' type='password' name='password' placeholder='Password' required>
     </form>
     <div id='auth-container'>
       <input class='NavButton centre' form='authenticate' type='submit' value='Register'>
     </div>
-    <% if (flash && flash.message) { %><div id='flash'><%= flash.message %></div><% } %>
-  </content>
-
+    <% if (typeof error !== "undefined") { %><div id='flash'><%= error %></div><% } %>
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>

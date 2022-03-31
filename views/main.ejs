@@ -1,3 +1,77 @@
-<content>
-  <div id='flash'> I am the MAIN PAGE welcome <%= user %></div>
-</content>
+<div style='text-align: center;'>
+  <!-- Centered Tabs -->
+  <% const date = new Date(new Date().setDate(new Date().getDate() + 1)).toDateString();%>
+  ​
+  <% for (let i = 0; i < 7; i++) { %>
+    <a href="#" class="badge badge-<%= i ? 'secondary' : 'light' %>" id="<%= i %>" style="font-size: large;" onclick="dayChange(event)"><%= i ? new Date(new Date().setDate(new Date().getDate() + i)).toDateString() : 'TODAY' %></a>
+  <% } %>
+</div>
+<br/>
+<div class="row">
+  
+  <div class="container">
+
+  <div class="panel panel-info" style="background-color: white">
+    <div class="panel-body" id="fixtures">
+    <% for (const id in fixturesFound) { %>
+      <div class="row">
+        <div class="col-md-1" style="text-align: left;"><img width="50%" height="100%" src='<%= fixturesFound[id].homeTeamLogo %>'> </div>
+      <div class="col-md-4" style="text-align: left;"> <%= fixturesFound[id].homeTeam %> </div>
+      <div class="col-md-2" style="text-align: center;"><%= fixturesFound[id].getKickOffTime() %></div> 
+      <div class="col-md-4" style="text-align: right;"><%= fixturesFound[id].awayTeam %> </div>
+      <div class="col-md-1" style="text-align: right;"><img width="50%" height="100%" src='<%= fixturesFound[id].awayTeamLogo %>'> </div>
+    </div>
+    <hr>
+      <% } %>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-md-12" style="text-align: center;">
+
+    <h2><a id='main'style='color:white' href=/refresh-fixtures>Refresh Fixtures</a></h1>
+  
+</div>
+  <script type="text/javascript">
+  
+  var lastClicked;
+
+  function dayChange(e) {
+    
+    if(lastClicked == undefined)
+    {
+    $('#0').addClass("badge-secondary").removeClass("badge-light");
+    $('#' + e.target.id).addClass("badge-light").removeClass("badge-secondary");
+    }
+    else
+    {
+    $(lastClicked).addClass("badge-secondary").removeClass("badge-light");
+    $('#' + e.target.id).addClass("badge-light").removeClass("badge-secondary");
+    }
+    lastClicked = '#' + e.target.id
+
+    $.ajax({
+      url: '/get-fixtures-by-date',
+      data: {date: e.target.id},
+      success: function(response) {
+
+    $('#fixtures').html(function(){
+      let html = ''
+      for (const id in response) 
+      html += `<div class="row">
+        <div class="col-md-1" style="text-align: left;"><img width="50%" height="100%" src=' ${ response[id].homeTeamLogo }'> </div>
+        <div class="col-md-4" style="text-align: left;"> ${ response[id].homeTeam } </div>
+        <div class="col-md-2" style="text-align: center;"> ${ response[id].date.substr(11, 5) }</div>
+        <div class="col-md-4" style="text-align: right;"> ${ response[id].awayTeam }</div>
+        <div class="col-md-1" style="text-align: right;"><img width="50%" height="100%" src=' ${ response[id].awayTeamLogo }'> </div>
+        </div>
+        <hr>`
+      return html
+    })
+      }
+    })
+  }
+  </script>
+
+
+

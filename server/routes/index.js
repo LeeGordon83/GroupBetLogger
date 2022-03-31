@@ -1,5 +1,3 @@
-module.exports = (_, res) => {
-  res.render('index.ejs', {
-    flash: res.locals.flash
-  })
+module.exports = (req, res) => {
+  res.redirect(req.session.user ? '/main' : '/login')
 }

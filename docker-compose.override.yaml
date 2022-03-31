@@ -1,0 +1,15 @@
+version: '3.7'
+
+# This override file should be used when running this service in isolation
+# to provide required sibling services for local testing
+
+services:
+  group-bet-logger:
+    build:
+      context: .
+      target: development
+    image: groupbetlogger
+    command: >
+      sh -c "
+        scripts/wait-for/wait-for group-bet-logger-postgres:5432 --
+        npm run migrate && npm start"
